@@ -39166,7 +39166,13 @@ var render = function() {
             _c("div", { attrs: { id: "videoHolder" } }, [
               _c("iframe", {
                 staticStyle: { height: "100%", width: "100%" },
-                attrs: { src: _vm.posnetekData.videoLink, frameborder: "0" }
+                attrs: {
+                  src: _vm.posnetekData.videoLink,
+                  frameborder: "0",
+                  webkitallowfullscreen: "",
+                  mozallowfullscreen: "",
+                  allowfullscreen: ""
+                }
               })
             ]),
             _vm._v(" "),

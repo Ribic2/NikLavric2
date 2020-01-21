@@ -6,7 +6,7 @@
         <div v-else class = "display">
             <h4 id = "videoTitle">{{ posnetekData.naslovPosnetka }}</h4>
             <div id = "videoHolder">
-                <iframe v-bind:src="posnetekData.videoLink" style="height:100%;width:100%" frameborder="0"></iframe>
+                <iframe v-bind:src="posnetekData.videoLink" style="height:100%;width:100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
             <p id = "videoDescription" v-for="sekcija in posnetekOpis">
                 {{ sekcija }}
