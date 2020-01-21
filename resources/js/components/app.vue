@@ -2,6 +2,7 @@
    <div class = "container" id = "app">
         <navbar></navbar>
         <router-view></router-view>
+        <cookies></cookies>
    </div>
 </template>
 <style scoped>
@@ -20,10 +21,13 @@
 </style>
 
 <script>
+
     import navbar from './navbar.vue'
+    import cookies from './cookie.vue'
     export default {
         components:{
-            navbar
+            navbar,
+            cookies
         }
     }
 </script>
