@@ -2532,6 +2532,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -39163,18 +39166,28 @@ var render = function() {
               _vm._v(_vm._s(_vm.posnetekData.naslovPosnetka))
             ]),
             _vm._v(" "),
-            _c("div", { attrs: { id: "videoHolder" } }, [
-              _c("iframe", {
-                staticStyle: { height: "100%", width: "100%" },
-                attrs: {
-                  src: _vm.posnetekData.videoLink,
-                  frameborder: "0",
-                  webkitallowfullscreen: "",
-                  mozallowfullscreen: "",
-                  allowfullscreen: ""
-                }
-              })
-            ]),
+            _c(
+              "div",
+              {
+                staticStyle: { position: "relative", "padding-top": "56.25%" }
+              },
+              [
+                _c("iframe", {
+                  staticStyle: {
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    height: "100%"
+                  },
+                  attrs: {
+                    src: _vm.posnetekData.videoLink,
+                    frameborder: "0",
+                    allowfullscreen: ""
+                  }
+                })
+              ]
+            ),
             _vm._v(" "),
             _vm._l(_vm.posnetekOpis, function(sekcija) {
               return _c("p", { attrs: { id: "videoDescription" } }, [
