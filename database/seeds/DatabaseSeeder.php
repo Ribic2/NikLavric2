@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
 
             [
                 'idPosnetki' => 1,
-                'naslovProjekta' => 'Ford Slovenija Slovenija Winter campaign 2020',
+                'naslovPosnetka' => 'Ford Slovenija Slovenija Winter campaign 2020',
                 'opisPosnetka' => 'Client: Ford Slovenija;Production: Lab 007;Producer: Lea Bajt;Director: Miha Kačič;DOP: Rožle Bregar, Peter Perunović;Post production: Nik Lavrič',
                 'videoLink' => 'https://www.youtube.com/embed/rtiYy29ueTo?list=PLyEfQXlqMsZCqtJE0O1ud2QXb3DugfRQi',
                 'thumbnail' => 'ford_01.jpg',
@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'idPosnetki' => 2,
-                'naslovProjekta' => 'Obrtna zbornica 50 let',
+                'naslovPosnetka' => 'Obrtna zbornica 50 let',
                 'opisPosnetka' => 'Client: Obrtno-podjetniška zbornica Slovenija;
                 Production: Lab 007;
                 Director and DOP: Miha Kačič;
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'idPosnetki' => 3,
-                'naslovProjekta' => 'Pirnar Contemporary Doors',
+                'naslovPosnetka' => 'Pirnar Contemporary Doors',
                 'opisPosnetka' => 'Client: Pirnar;
                 Production: Lab 007;
                 Animation: Nik Lavrič',
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'idPosnetki' => 4,
-                'naslovProjekta' => 'Lidl Otvoritev logističnega centra Arja vas',
+                'naslovPosnetka' => 'Lidl Otvoritev logističnega centra Arja vas',
                 'opisPosnetka' => 'Client: Lidl Slovenija;
                 Production: Lab 007;
                 DOP: Miha Kačič;
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'idPosnetki' => 5,
-                'naslovProjekta' => 'Epicenter 19',
+                'naslovPosnetka' => 'Epicenter 19',
                 'opisPosnetka' => 'Client: Spid.si;
                 DOP: Nik Lavrič;
                 Post production: Nik Lavrič
@@ -69,7 +69,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'idPosnetki' => 6,
-                'naslovProjekta' => 'Epicenter 20',
+                'naslovPosnetka' => 'Epicenter 20',
                 'opisPosnetka' => 'Client: Spid.si;
                 DOP: Nik Lavrič, Jaka Kordiš;
                 Post production: Nik Lavrič
@@ -80,7 +80,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'idPosnetki' => 7,
-                'naslovProjekta' => 'Mastercard Sonic Brand',
+                'naslovPosnetka' => 'Mastercard Sonic Brand',
                 'opisPosnetka' => 'Client: Mastercard Slovenija;
                 Agency: Mayer McCann;
                 Director and DOP: Miha Kačič;
@@ -92,7 +92,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'idPosnetki' => 8,
-                'naslovProjekta' => 'Jan Plestenjak Kvatropirci & Coto Res je dober dan',
+                'naslovPosnetka' => 'Jan Plestenjak Kvatropirci & Coto Res je dober dan',
                 'opisPosnetka' => 'Client: Jan Plestenjak;
                 Production: Instant;
                 Director and DOP: Vladan Janković;
@@ -105,7 +105,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'idPosnetki' => 9,
-                'naslovProjekta' => 'Hvala fanta',
+                'naslovPosnetka' => 'Hvala fanta',
                 'opisPosnetka' => 'Director: David Belina;
                 Actors: Borna Miljavac Purgar, Alen Mastnak, Jan Doljak;
                 Written by: Alen Mastnak, Nejc Jezernik, Tomaž Kranjc, David Belina;
@@ -122,7 +122,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'idPosnetki' => 10,
-                'naslovProjekta' => 'Bartog Logistic center',
+                'naslovPosnetka' => 'Bartog Logistic center',
                 'opisPosnetka' => 'Production: Real Frame;
                 DOP: Jernej Auguštin;
                 Edit: Jernej Auguštin;
@@ -134,7 +134,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'idPosnetki' => 11,
-                'naslovProjekta' => 'Petrol IAM',
+                'naslovPosnetka' => 'Petrol IAM',
                 'opisPosnetka' => 'PClient: Petrol - IAM Ljubljana;
                 Director: David Belina;
                 DOP: Nejc Hafner;
@@ -151,7 +151,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'idPosnetki' => 12,
-                'naslovProjekta' => 'Cosylab radiotherapy products suite',
+                'naslovPosnetka' => 'Cosylab radiotherapy products suite',
                 'opisPosnetka' => 'Client: Cosylab;
                 Agency: Rubikongral;
                 Animation: Nik Lavrič
