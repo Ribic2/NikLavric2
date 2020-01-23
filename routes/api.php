@@ -18,8 +18,8 @@ use App\Http\Resources\PosnetkiResource as PosnetkiResource;
 
 Route::get('posnetki', function(){
     return PosnetkiResource::collection(Posnetki::all()->keyBy->naslovPosnetka);
-});
+})->middleware('cors');
 
 Route::get('posnetki/{id}', function($id) {
     return PosnetkiResource::collection(Posnetki::where('naslovPosnetkaApi', $id)->get());
-});
+})->middleware('cors');
