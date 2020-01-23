@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 
 Use App\posnetki;
+use App\Http\Resources\PosnetkiResource as PosnetkiResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,9 @@ Use App\posnetki;
 */
 
 Route::get('posnetki', function(){
-    return Posnetki::all();
+    return PosnetkiResource::collection(Posnetki::all()->keyBy->naslovPosnetka);
 });
 
 Route::get('posnetki/{id}', function($id) {
-    return Posnetki::find($id);
+    return PosnetkiResource::collection(Posnetki::where('naslovPosnetkaApi', $id)->get());
 });

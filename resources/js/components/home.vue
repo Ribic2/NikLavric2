@@ -23,15 +23,16 @@
         position: relative;
     }
     .thumbNailText{
-        height: 10%;
+        height: 20%;
         position: absolute;
         width: 100%;
         font-family: 'Open Sans', sans-serif;
         text-align: center;
-        bottom: 50%;
+        bottom: 40%;
+        display: none;
         color: white;
         transition: 0.1s;
-        display: none;
+
         text-shadow: 0px 8px 9px black;
     }
     .thumbnail{
@@ -86,8 +87,8 @@
         <div class = "col-xl-4 col-md-6 Projekt" v-for="projekt in posnetkiData" v-bind:key="projekt.idPosnetki">
 
             <div class = "projectVideo">
-                <img class = "thumbnail" v-bind:src = "'/storage/' + projekt.thumbnail" @mouseover="DisplayText(projekt.idPosnetki)" @mouseleave="HiddeText(projekt.idPosnetki)" v-on:click="redirect(projekt.idPosnetki)">
-                <h3 class = "thumbNailText" v-on:click="redirect(projekt.idPosnetki)">{{ projekt.naslovPosnetka }}</h3>
+                <img class = "thumbnail" v-bind:src = "'/storage/' + projekt.thumbnail" @mouseover="DisplayText(projekt.idPosnetki)" @mouseleave="HiddeText(projekt.idPosnetki)" v-on:click="redirect(projekt.naslovPosnetka)">
+                <h3 class = "thumbNailText" v-on:click="redirect(projekt.naslovPosnetka)" @mouseover="DisplayText(projekt.idPosnetki)" @mouseleave="HiddeText(projekt.idPosnetki)">{{ projekt.naslovPosnetka }}</h3>
             </div>
         </div>
     </div>
@@ -116,12 +117,15 @@
                 thumbnailText.style.display = "none";
             },
             redirect: function(e){
-                window.location.href = "/posnetek/"+e;
+                var lowerCase = e.toLowerCase();
+                var path = lowerCase.split(' ').join('-');
+                window.location.href = "/posnetek/"+path;
             }
         },
         created: function(){
             axios.get("http://127.0.0.1:8000/api/posnetki").then((response) => {
-                this.posnetkiData = response.data;
+                this.posnetkiData = response.data.data;
+
             });
         }
     }

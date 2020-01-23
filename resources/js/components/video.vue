@@ -81,15 +81,15 @@ export default {
     },
     created:function(){
         var path = window.location.pathname;
-        var splitPath = path.split('/');
-        var replacePath = splitPath[2].split("%").join(" ");
+        var splitPath = path.split('/')[2];
+        var fullPathName = splitPath.split('%20').join(' ');
 
-        axios.get("http://127.0.0.1:8000/api/posnetki/"+replacePath).then((response) => {
+        axios.get("http://127.0.0.1:8000/api/posnetki/"+fullPathName).then((response) => {
             if(response.data != null){
-                this.posnetekData = response.data;
+                this.posnetekData = response.data.data[0];
 
-                this.posnetekOpis = response.data.opisPosnetka.split(";");
-                console.log(this.posnetekOpis);
+                this.posnetekOpis = response.data.data[0].opisPosnetka.split(";");
+
             }else{
                 this.posnetekData = 'Video not found.';
             }

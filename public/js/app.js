@@ -2040,6 +2040,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'about'
 });
@@ -2099,6 +2100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -2334,6 +2336,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2354,14 +2357,16 @@ __webpack_require__.r(__webpack_exports__);
       thumbnailText.style.display = "none";
     },
     redirect: function redirect(e) {
-      window.location.href = "/posnetek/" + e;
+      var lowerCase = e.toLowerCase();
+      var path = lowerCase.split(' ').join('-');
+      window.location.href = "/posnetek/" + path;
     }
   },
   created: function created() {
     var _this = this;
 
     axios.get("http://127.0.0.1:8000/api/posnetki").then(function (response) {
-      _this.posnetkiData = response.data;
+      _this.posnetkiData = response.data.data;
     });
   }
 });
@@ -2581,13 +2586,12 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     var path = window.location.pathname;
-    var splitPath = path.split('/');
-    var replacePath = splitPath[2].split("%").join(" ");
-    axios.get("http://127.0.0.1:8000/api/posnetki/" + replacePath).then(function (response) {
+    var splitPath = path.split('/')[2];
+    var fullPathName = splitPath.split('%20').join(' ');
+    axios.get("http://127.0.0.1:8000/api/posnetki/" + fullPathName).then(function (response) {
       if (response.data != null) {
-        _this.posnetekData = response.data;
-        _this.posnetekOpis = response.data.opisPosnetka.split(";");
-        console.log(_this.posnetekOpis);
+        _this.posnetekData = response.data.data[0];
+        _this.posnetekOpis = response.data.data[0].opisPosnetka.split(";");
       } else {
         _this.posnetekData = 'Video not found.';
       }
@@ -7140,7 +7144,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-0b0aedd2]{\n    padding: 0px;\n    margin: 0px;\n}\n#contentArea[data-v-0b0aedd2]{\n    width: 100%;\n    margin-top: 10px;\n}\n.textHolder[data-v-0b0aedd2]{\n    width: 90%;\n    min-height: 200px;\n    height: auto;\n    float: left;\n}\n.imageHolder[data-v-0b0aedd2]{\n    width: 90%;\n    min-height: 500px;\n    height: auto;\n    float: right;\n}\n#profilPicture[data-v-0b0aedd2]{\n    height: 100%;\n    width: 100%;\n}\n@media only screen and (max-width: 575px){\n.textHolder[data-v-0b0aedd2]{\n       width: 100%;\n       float: none !important;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n        margin-top: 3vw;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n#profilPicture[data-v-0b0aedd2]{\n        position: relative;\n}\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n}\n@media only screen and (min-width: 576px) and (max-width: 767px){\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n        margin-top: 3vw;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n}\n@media only screen and (min-width: 768px) and (max-width: 911px){\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n        margin-top: 3vw;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n}\n@media only screen and (min-width: 912px) and (max-width: 1199px){\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n}\n\n/* Test you can delete after*/\n\n", ""]);
+exports.push([module.i, "\n*[data-v-0b0aedd2]{\n    padding: 0px;\n    margin: 0px;\n}\n#contentArea[data-v-0b0aedd2]{\n    width: 100%;\n    margin-top: 10px;\n    padding-top: 10px;\n}\n.textHolder[data-v-0b0aedd2]{\n    width: 90%;\n    min-height: 200px;\n    height: auto;\n    float: left;\n}\n.imageHolder[data-v-0b0aedd2]{\n    width: 90%;\n    min-height: 500px;\n    height: auto;\n    float: right;\n}\n#profilPicture[data-v-0b0aedd2]{\n    height: 100%;\n    width: 100%;\n}\n@media only screen and (max-width: 575px){\n.textHolder[data-v-0b0aedd2]{\n       width: 100%;\n       float: none !important;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n        margin-top: 3vw;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n#profilPicture[data-v-0b0aedd2]{\n        position: relative;\n}\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n}\n@media only screen and (min-width: 576px) and (max-width: 767px){\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n        margin-top: 3vw;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n}\n@media only screen and (min-width: 768px) and (max-width: 911px){\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n        margin-top: 3vw;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n}\n@media only screen and (min-width: 912px) and (max-width: 1199px){\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n}\n\n/* Test you can delete after*/\n\n", ""]);
 
 // exports
 
@@ -7178,7 +7182,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-768395a5]{\n    padding: 0px;\n    margin: 0px;\n    font-family: 'Open Sans', sans-serif;\n}\n#contactInfo[data-v-768395a5]{\n    height: 504px;\n    margin-top: 10px;\n    width: 95%;\n}\n#formArea[data-v-768395a5]{\n    margin-top: 30px;\n}\nform[data-v-768395a5]{\n    margin-top: 30px;\n}\ninput[data-v-768395a5]{\n    width: 95%;\n    height: 39px;\n    left: 773px;\n    top: 332px;\n    border-radius: 0px;\n    background: #FFFFFF;\n    border: 1px solid #000000;\n    box-sizing: border-box;\n    border: none;\n    border-top: solid 1px black;\n    border-left: solid 1px black;\n    border-right: solid 1px black;\n}\ntextarea[data-v-768395a5]{\n    width: 95%;\n    height: 125px;\n    left: 773px;\n    top: 408px;\n    background: #FFFFFF;\n    resize: none;\n    border: 1px solid #000000;\n    box-sizing: border-box;\n}\n#submit[data-v-768395a5]{\n    width: 103px;\n    height: 39px;\n    margin-top: 20px;\n    background: #FFFFFF;\n    border: 1px solid #000000;\n    box-sizing: border-box;\n}\nh3[data-v-768395a5]{\n    font-size: 18px;\n    line-height: 25px;\n}\nh4[data-v-768395a5]{\n    font-family: 'Open Sans', sans-serif;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 14px;\n    line-height: 19px;\n    color: #000000;\n}\n@media  screen and (max-width: 1140px){\n#Contacts[data-v-768395a5]{\n       height: 300px;\n}\ninput[data-v-768395a5]{\n       width: 60%;\n}\n}\n@media screen and (max-width: 575px){\n#contentArea[data-v-768395a5]{\n        padding-bottom: 10px;\n}\n}\n\n\n", ""]);
+exports.push([module.i, "\n*[data-v-768395a5]{\n    padding: 0px;\n    margin: 0px;\n    font-family: 'Open Sans', sans-serif;\n}\n#contactInfo[data-v-768395a5]{\n    height: 504px;\n    margin-top: 10px;\n    padding-top: 10px;\n    width: 95%;\n}\n#formArea[data-v-768395a5]{\n    margin-top: 30px;\n}\nform[data-v-768395a5]{\n    margin-top: 30px;\n}\ninput[data-v-768395a5]{\n    width: 95%;\n    height: 39px;\n    left: 773px;\n    top: 332px;\n    border-radius: 0px;\n    background: #FFFFFF;\n    border: 1px solid #000000;\n    box-sizing: border-box;\n    border: none;\n    border-top: solid 1px black;\n    border-left: solid 1px black;\n    border-right: solid 1px black;\n}\ntextarea[data-v-768395a5]{\n    width: 95%;\n    height: 125px;\n    left: 773px;\n    top: 408px;\n    background: #FFFFFF;\n    resize: none;\n    border: 1px solid #000000;\n    box-sizing: border-box;\n}\n#submit[data-v-768395a5]{\n    width: 103px;\n    height: 39px;\n    margin-top: 20px;\n    background: #FFFFFF;\n    border: 1px solid #000000;\n    box-sizing: border-box;\n}\nh3[data-v-768395a5]{\n    font-size: 18px;\n    line-height: 25px;\n}\nh4[data-v-768395a5]{\n    font-family: 'Open Sans', sans-serif;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 14px;\n    line-height: 19px;\n    color: #000000;\n}\n@media  screen and (max-width: 1140px){\n#Contacts[data-v-768395a5]{\n       height: 300px;\n}\ninput[data-v-768395a5]{\n       width: 60%;\n}\n}\n@media screen and (max-width: 575px){\n#contentArea[data-v-768395a5]{\n        padding-bottom: 10px;\n}\n}\n\n\n", ""]);
 
 // exports
 
@@ -7216,7 +7220,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-fa6affac]{\n    margin: 0px;\n    padding: 0px;\n    font-family: 'Open Sans', sans-serif;\n}\n.Projekt[data-v-fa6affac]{\n    height: 400px;\n    padding-top: 10px;\n}\n.Projekt[data-v-fa6affac]:hover{\n    cursor: pointer;\n}\n#Projects[data-v-fa6affac]{\n    width: 100%;\n    position: relative;\n    margin-top: 10px;\n    padding-bottom: 50px;\n}\n.projectVideo[data-v-fa6affac]{\n    width: 97.5%;\n    height: 100%;\n    position: relative;\n}\n.thumbNailText[data-v-fa6affac]{\n    height: 10%;\n    position: absolute;\n    width: 100%;\n    font-family: 'Open Sans', sans-serif;\n    text-align: center;\n    bottom: 50%;\n    color: white;\n    -webkit-transition: 0.1s;\n    transition: 0.1s;\n    display: none;\n    text-shadow: 0px 8px 9px black;\n}\n.thumbnail[data-v-fa6affac]{\n    height: 100%;\n    width: 100%;\n}\n@media only screen and (min-width: 1200px){\n.thumbnail[data-v-fa6affac]{\n        min-height: 360px;\n}\n.Projekt[data-v-fa6affac]{\n        height: auto;\n}\n}\n@media only screen and (max-width: 1140px){\n.Projekt[data-v-fa6affac]{\n        height: auto;\n}\n}\n@media only screen and (min-width: 992px) and (max-width: 1199px){\n.thumbnail[data-v-fa6affac]{\n        height: 30vw;\n        min-height: 453px;\n}\n.Projekt[data-v-fa6affac]{\n        height: auto;\n}\n}\n@media only screen and (min-width: 768px) and (max-width: 991px){\n.thumbnail[data-v-fa6affac]{\n        height: 30vw;\n        min-height: 336px\n}\n}\n@media only screen and (min-width: 576px) and (max-width: 767px){\n.thumbnail[data-v-fa6affac]{\n        min-height: 450px;\n        height: 55vw;\n}\n}\n@media only screen and (max-width: 575px){\n.thumbnail[data-v-fa6affac]{\n        min-height: 250px;\n        height: 85vw;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n*[data-v-fa6affac]{\n    margin: 0px;\n    padding: 0px;\n    font-family: 'Open Sans', sans-serif;\n}\n.Projekt[data-v-fa6affac]{\n    height: 400px;\n    padding-top: 10px;\n}\n.Projekt[data-v-fa6affac]:hover{\n    cursor: pointer;\n}\n#Projects[data-v-fa6affac]{\n    width: 100%;\n    position: relative;\n    margin-top: 10px;\n    padding-bottom: 50px;\n}\n.projectVideo[data-v-fa6affac]{\n    width: 97.5%;\n    height: 100%;\n    position: relative;\n}\n.thumbNailText[data-v-fa6affac]{\n    height: 20%;\n    position: absolute;\n    width: 100%;\n    font-family: 'Open Sans', sans-serif;\n    text-align: center;\n    bottom: 40%;\n    display: none;\n    color: white;\n    -webkit-transition: 0.1s;\n    transition: 0.1s;\n\n    text-shadow: 0px 8px 9px black;\n}\n.thumbnail[data-v-fa6affac]{\n    height: 100%;\n    width: 100%;\n}\n@media only screen and (min-width: 1200px){\n.thumbnail[data-v-fa6affac]{\n        min-height: 360px;\n}\n.Projekt[data-v-fa6affac]{\n        height: auto;\n}\n}\n@media only screen and (max-width: 1140px){\n.Projekt[data-v-fa6affac]{\n        height: auto;\n}\n}\n@media only screen and (min-width: 992px) and (max-width: 1199px){\n.thumbnail[data-v-fa6affac]{\n        height: 30vw;\n        min-height: 453px;\n}\n.Projekt[data-v-fa6affac]{\n        height: auto;\n}\n}\n@media only screen and (min-width: 768px) and (max-width: 991px){\n.thumbnail[data-v-fa6affac]{\n        height: 30vw;\n        min-height: 336px\n}\n}\n@media only screen and (min-width: 576px) and (max-width: 767px){\n.thumbnail[data-v-fa6affac]{\n        min-height: 450px;\n        height: 55vw;\n}\n}\n@media only screen and (max-width: 575px){\n.thumbnail[data-v-fa6affac]{\n        min-height: 250px;\n        height: 85vw;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -41427,7 +41431,7 @@ var render = function() {
                     return _vm.HiddeText(projekt.idPosnetki)
                   },
                   click: function($event) {
-                    return _vm.redirect(projekt.idPosnetki)
+                    return _vm.redirect(projekt.naslovPosnetka)
                   }
                 }
               }),
@@ -41438,7 +41442,13 @@ var render = function() {
                   staticClass: "thumbNailText",
                   on: {
                     click: function($event) {
-                      return _vm.redirect(projekt.idPosnetki)
+                      return _vm.redirect(projekt.naslovPosnetka)
+                    },
+                    mouseover: function($event) {
+                      return _vm.DisplayText(projekt.idPosnetki)
+                    },
+                    mouseleave: function($event) {
+                      return _vm.HiddeText(projekt.idPosnetki)
                     }
                   }
                 },

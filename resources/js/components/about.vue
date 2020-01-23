@@ -6,6 +6,7 @@
     #contentArea{
         width: 100%;
         margin-top: 10px;
+        padding-top: 10px;
     }
     .textHolder{
         width: 90%;

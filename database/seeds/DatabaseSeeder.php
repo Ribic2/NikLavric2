@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
                 'naslovProjekta' => 'Ford Slovenija Slovenija Winter campaign 2020',
                 'opisPosnetka' => 'Client: Ford Slovenija;Production: Lab 007;Producer: Lea Bajt;Director: Miha Kačič;DOP: Rožle Bregar, Peter Perunović;Post production: Nik Lavrič',
                 'videoLink' => 'https://www.youtube.com/embed/rtiYy29ueTo?list=PLyEfQXlqMsZCqtJE0O1ud2QXb3DugfRQi',
-                'thumbnail' => 'ford_01.jpg'
+                'thumbnail' => 'ford_01.jpg',
+                'naslovPosnetkaApi' => 'ford-slovenija-slovenija-winter-campaign-2020'
             ],
             [
                 'idPosnetki' => 2,
@@ -30,7 +31,8 @@ class DatabaseSeeder extends Seeder
                 Post production: Nik Lavrič
                 ',
                 'videoLink' => 'https://www.youtube.com/embed/ijouZo-HLu4',
-                'thumbnail' => 'ozs_50.jpg'
+                'thumbnail' => 'ozs_50.jpg',
+                'naslovPosnetkaApi' => 'obrtna-zbornica-50-let'
             ],
             [
                 'idPosnetki' => 3,
@@ -39,7 +41,8 @@ class DatabaseSeeder extends Seeder
                 Production: Lab 007;
                 Animation: Nik Lavrič',
                 'videoLink' => 'https://www.youtube.com/embed/cNY5PlmdNrc',
-                'thumbnail' => 'pirnar_01.jpg'
+                'thumbnail' => 'pirnar_01.jpg',
+                'naslovPosnetkaApi' => 'pirnar-contemporary-doors'
             ],
             [
                 'idPosnetki' => 4,
@@ -50,7 +53,8 @@ class DatabaseSeeder extends Seeder
                 Post production: Nik Lavrič
                 ',
                 'videoLink' => 'https://www.youtube.com/embed/xs9sv5HjXHc',
-                'thumbnail' => 'lidl_01.jpg'
+                'thumbnail' => 'lidl_01.jpg',
+                'naslovPosnetkaApi' => 'lidl-otvoritev-logističnega-centra-arja-vas'
             ],
             [
                 'idPosnetki' => 5,
@@ -60,7 +64,8 @@ class DatabaseSeeder extends Seeder
                 Post production: Nik Lavrič
                 ',
                 'videoLink' => 'https://www.youtube.com/embed/uO6qysJpWWM',
-                'thumbnail' => 'ec19.jpg'
+                'thumbnail' => 'ec19.jpg',
+                'naslovPosnetkaApi' => 'epicenter-19'
             ],
             [
                 'idPosnetki' => 6,
@@ -70,7 +75,8 @@ class DatabaseSeeder extends Seeder
                 Post production: Nik Lavrič
                 ',
                 'videoLink' => 'https://www.youtube.com/embed/Zn03APUwTiA',
-                'thumbnail' => 'ec20_02.jpg'
+                'thumbnail' => 'ec20_02.jpg',
+                'naslovPosnetkaApi' => 'epicenter-20'
             ],
             [
                 'idPosnetki' => 7,
@@ -81,11 +87,12 @@ class DatabaseSeeder extends Seeder
                 Post production: Nik Lavrič
                 ',
                 'videoLink' => 'https://www.youtube.com/embed/lnO1jbqcWto',
-                'thumbnail' => 'mc_01.jpg'
+                'thumbnail' => 'mc_01.jpg',
+                'naslovPosnetkaApi' => 'mastercard-sonic-brand'
             ],
             [
                 'idPosnetki' => 8,
-                'naslovProjekta' => 'Jan Plestenjak, Kvatropirci & Coto - Res je dober dan',
+                'naslovProjekta' => 'Jan Plestenjak Kvatropirci & Coto Res je dober dan',
                 'opisPosnetka' => 'Client: Jan Plestenjak;
                 Production: Instant;
                 Director and DOP: Vladan Janković;
@@ -93,7 +100,8 @@ class DatabaseSeeder extends Seeder
                 Color Correction: Klemen Smolar
                 ',
                 'videoLink' => 'https://www.youtube.com/embed/ims8JARsIXs',
-                'thumbnail' => 'janplestenjak_01.jpg'
+                'thumbnail' => 'janplestenjak_01.jpg',
+                'naslovPosnetkaApi' => 'jan-plestenjak-kvatropirci-&-coto-res-je-dober-dan'
             ],
             [
                 'idPosnetki' => 9,
@@ -109,18 +117,20 @@ class DatabaseSeeder extends Seeder
                 Sound recorder: Alex Slokan
                 ',
                 'videoLink' => 'https://www.youtube.com/embed/LctgiId2-VU',
-                'thumbnail' => 'hvalafanta_01.jpg'
+                'thumbnail' => 'hvalafanta_01.jpg',
+                'naslovPosnetkaApi' => 'hvala-fanta'
             ],
             [
                 'idPosnetki' => 10,
-                'naslovProjekta' => 'Bartog - Logistic center',
+                'naslovProjekta' => 'Bartog Logistic center',
                 'opisPosnetka' => 'Production: Real Frame;
                 DOP: Jernej Auguštin;
                 Edit: Jernej Auguštin;
                 Grade & logo animation: Nik Lavrič;
                 ',
                 'videoLink' => 'https://www.youtube.com/embed/Ba1PVhtRbb4',
-                'thumbnail' => 'bartog_01.jpg'
+                'thumbnail' => 'bartog_01.jpg',
+                'naslovPosnetkaApi' => 'bartog-logistic-center'
             ],
             [
                 'idPosnetki' => 11,
@@ -136,7 +146,8 @@ class DatabaseSeeder extends Seeder
                 Social media: Neja Rečnik
                 ',
                 'videoLink' => 'https://www.youtube.com/embed/ylTMJE3o_ic',
-                'thumbnail' => 'petrol_01.jpg'
+                'thumbnail' => 'petrol_01.jpg',
+                'naslovPosnetkaApi' => 'petrol-iam'
             ],
             [
                 'idPosnetki' => 12,
@@ -146,7 +157,8 @@ class DatabaseSeeder extends Seeder
                 Animation: Nik Lavrič
                 ',
                 'videoLink' => 'https://www.youtube.com/embed/xppDlPI6glc',
-                'thumbnail' => 'cosylab_01.jpg'
+                'thumbnail' => 'cosylab_01.jpg',
+                'naslovPosnetkaApi' => 'cosylab-radiotherapy-products-suite'
             ],
         ]);
     }

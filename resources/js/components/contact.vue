@@ -7,6 +7,7 @@
     #contactInfo{
         height: 504px;
         margin-top: 10px;
+        padding-top: 10px;
         width: 95%;
     }
     #formArea{

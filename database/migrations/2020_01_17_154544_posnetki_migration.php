@@ -19,6 +19,7 @@ class PosnetkiMigration extends Migration
             $table->string('opisPosnetka');
             $table->string('videoLink');
             $table->string('thumbnail');
+            $table->string('naslovPosnetkaApi');
         });
     }
 
