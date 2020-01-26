@@ -20,6 +20,7 @@
     .projectVideo{
         width: 97.5%;
         height: 100%;
+        margin: 0 auto;
         position: relative;
     }
     .thumbNailText{
@@ -29,10 +30,13 @@
         font-family: 'Open Sans', sans-serif;
         text-align: center;
         bottom: 40%;
+        margin: 0 auto;
         display: none;
         color: white;
         transition: 0.1s;
-
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
         text-shadow: 0px 8px 9px black;
     }
     .thumbnail{
@@ -83,12 +87,11 @@
 </style>
 <template>
     <div class="row" id = "Projects">
-        <h1></h1>
         <div class = "col-xl-4 col-md-6 Projekt" v-for="projekt in posnetkiData" v-bind:key="projekt.idPosnetki">
 
             <div class = "projectVideo">
                 <img class = "thumbnail" v-bind:src = "'/storage/' + projekt.thumbnail" @mouseover="DisplayText(projekt.idPosnetki)" @mouseleave="HiddeText(projekt.idPosnetki)" v-on:click="redirect(projekt.naslovPosnetka)">
-                <h3 class = "thumbNailText" v-on:click="redirect(projekt.naslovPosnetka)" @mouseover="DisplayText(projekt.idPosnetki)" @mouseleave="HiddeText(projekt.idPosnetki)">{{ projekt.naslovPosnetka }}</h3>
+                <h3 class = "thumbNailText" v-on:click="redirect(projekt.naslovPosnetka)" @mouseover="DisplayText(projekt.idPosnetki)" @mouseleave="HiddeText(projekt.idPosnetki)">{{ projekt.naslovPosnetka.toUpperCase() }}</h3>
             </div>
         </div>
     </div>
@@ -119,11 +122,11 @@
             redirect: function(e){
                 var lowerCase = e.toLowerCase();
                 var path = lowerCase.split(' ').join('-');
-                window.location.href = "/posnetek/"+path;
+                window.location.href = "/work/"+path;
             }
         },
         created: function(){
-            axios.get("https://niklavric.com/api/posnetki").then((response) => {
+            axios.get("http://127.0.0.1:8000/api/posnetki").then((response) => {
                 this.posnetkiData = response.data.data;
 
             });

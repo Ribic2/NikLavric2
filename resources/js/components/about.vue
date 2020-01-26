@@ -96,7 +96,7 @@
     <div class="row" id = "contentArea">
         <div class = "col-xl-6 textHolder" id = "text">
            <div>
-            <p>Born in Novo mesto in 1998, Nik Lavrič is a young Slovenian editor and colorist. He studied multimedia production at IAM Ljubljana. His work is primarily short form TV and web advertising content, music videos and short films..</p>
+            <p>Born in Novo mesto in 1998, Nik Lavrič is a young Slovenian editor and colorist. He studied multimedia production at IAM Ljubljana. <br><br>His work is primarily short form TV and web advertising content, music videos and short films.</p>
            </div>
         </div>
         <div class = "col-xl-6 imageHolder">

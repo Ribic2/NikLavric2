@@ -52,6 +52,17 @@
         font-size: 18px;
         line-height: 25px;
     }
+    .socialMediaLink > a > img{
+        height: 100px;
+        width: 100px;
+    }
+    #socialMediaLinkHolder{
+        min-width: 200px;
+        max-width: 200px;
+        width: auto;
+        position: relative;
+        top: 10px;
+    }
     h4{
         font-family: 'Open Sans', sans-serif;
         font-style: normal;
@@ -72,6 +83,9 @@
         #contentArea{
             padding-bottom: 10px;
         }
+        #socialMediaLinkHolder{
+            width: 100%
+        }
     }
 
 
@@ -81,13 +95,22 @@
     <div class="row" id = "contentArea">
         <div class = "col-xl-12" id = "Contacts">
             <div id = "contactInfo">
-                <p>Located in Ljubljana, Slovenia. Available globaly.</p>
+                <p>Located in Ljubljana, Slovenia. Available globally.</p>
                 <br>
                 <h2>Phone</h2>
-                <p>00386 40 874 144</p>
+                <p> 00386 four zero 874 144</p>
                 <br>
                 <h2>Email</h2>
-                <p>hello@niklavric.com</p>
+                <p>nik.lavric@gmail.com</p>
+
+                <div class = "row" id = "socialMediaLinkHolder">
+                    <div class="col-6 socialMediaLink">
+                        <a href="https://www.instagram.com/niklavric/"><img src="https://niklavric.com/storage/Instagram.png"></a>
+                    </div>
+                    <div class="col-6 socialMediaLink">
+                        <a href="https://www.facebook.com/niklavric"><img src="https://niklavric.com/storage/Facebook_Logo.png"></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

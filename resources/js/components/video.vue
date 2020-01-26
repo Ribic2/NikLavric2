@@ -4,15 +4,14 @@
             <h1>{{ posnetekData }}</h1>
         </div>
         <div v-else class = "display">
-            <h4 id = "videoTitle">{{ posnetekData.naslovPosnetka }}</h4>
 
             <div style="position:relative;padding-top:56.25%;">
                 <iframe :src="posnetekData.videoLink" frameborder="0" allowfullscreen
                 style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
             </div>
-
+            <h4 id = "videoTitle">{{ posnetekNaslov }}</h4>
             <p id = "videoDescription" v-for="sekcija in posnetekOpis" v-bind:key="sekcija">
-                {{ sekcija }}
+                <b class = "title">{{ sekcija.opis }}:</b>{{ sekcija.ime }}
             </p>
         </div>
     </div>
@@ -39,12 +38,17 @@
         height: 30vw;
     }
     #videoTitle{
+        padding-top: 10px;
         padding-bottom: 10px;
-        font-weight: bolder;
+        font-size: 18px;
     }
     #videoDescription{
         margin-top: 10px;
     }
+    .title{
+        font-weight:600;
+    }
+
     @media only screen and (min-width: 1200px){
         #videoHolder{
             height: 30vw;
@@ -76,7 +80,8 @@ export default {
     data(){
         return{
             posnetekData: '',
-            posnetekOpis: ''
+            posnetekOpis: [],
+            posnetekNaslov: ''
         }
     },
     created:function(){
@@ -84,14 +89,23 @@ export default {
         var splitPath = path.split('/')[2];
         var fullPathName = splitPath.split('%20').join(' ');
 
-        axios.get("https://niklavric.com/api/posnetki/"+fullPathName).then((response) => {
+        axios.get("http://127.0.0.1:8000/api/posnetki/"+fullPathName).then((response) => {
             if(response.data != null){
                 this.posnetekData = response.data.data[0];
+                this.posnetekNaslov = response.data.data[0].naslovPosnetka.toUpperCase();
 
-                this.posnetekOpis = response.data.data[0].opisPosnetka.split(";");
+                var opis = response.data.data[0].opisPosnetka.split(";");
+                for(var i = 0; i < opis.length; i++){
+                    var split = opis[i].split(":");
+                    var data = {opis: split[0], ime: split[1]};
+
+                    this.posnetekOpis.push(data);
+
+                }
+
 
             }else{
-                this.posnetekData = 'Video not found.';
+                this.posnetekData = 'Video not found!';
             }
         });
     }

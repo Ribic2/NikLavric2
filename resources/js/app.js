@@ -19,7 +19,7 @@ const routes = [
     {path: '/', component: root},
     {path: '/about', component: about},
     {path: '/contact', component: contact},
-    {path: '/posnetek/:id', component: video},
+    {path: '/work/:id', component: video},
     {path: '/*', component: page404}
 ]
 
