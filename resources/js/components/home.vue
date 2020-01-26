@@ -126,7 +126,7 @@
             }
         },
         created: function(){
-            axios.get("http://127.0.0.1:8000/api/posnetki").then((response) => {
+            axios.get("https://niklavric.com/api/posnetki").then((response) => {
                 this.posnetkiData = response.data.data;
 
             });

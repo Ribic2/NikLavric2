@@ -3,7 +3,7 @@
   <head>
     <title>Nik Lavrič</title>
     <meta charset="utf-8">
-    <link rel="shortcut icon" type="image/png" href="http://127.0.0.1:8000/storage/nik_favicon.jpg"/>
+    <link rel="shortcut icon" type="image/png" href="https://niklavric.com/storage/nik_favicon.jpg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">

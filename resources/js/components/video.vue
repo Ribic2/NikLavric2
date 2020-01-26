@@ -89,7 +89,7 @@ export default {
         var splitPath = path.split('/')[2];
         var fullPathName = splitPath.split('%20').join(' ');
 
-        axios.get("http://127.0.0.1:8000/api/posnetki/"+fullPathName).then((response) => {
+        axios.get("https://niklavric.com/api/posnetki/"+fullPathName).then((response) => {
             if(response.data != null){
                 this.posnetekData = response.data.data[0];
                 this.posnetekNaslov = response.data.data[0].naslovPosnetka.toUpperCase();

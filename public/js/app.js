@@ -2391,7 +2391,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get("http://127.0.0.1:8000/api/posnetki").then(function (response) {
+    axios.get("https://niklavric.com/api/posnetki").then(function (response) {
       _this.posnetkiData = response.data.data;
     });
   }
@@ -2619,7 +2619,7 @@ __webpack_require__.r(__webpack_exports__);
     var path = window.location.pathname;
     var splitPath = path.split('/')[2];
     var fullPathName = splitPath.split('%20').join(' ');
-    axios.get("http://127.0.0.1:8000/api/posnetki/" + fullPathName).then(function (response) {
+    axios.get("https://niklavric.com/api/posnetki/" + fullPathName).then(function (response) {
       if (response.data != null) {
         _this.posnetekData = response.data.data[0];
         _this.posnetekNaslov = response.data.data[0].naslovPosnetka.toUpperCase();
@@ -41323,7 +41323,10 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-xl-6 imageHolder" }, [
         _c("div", [
           _c("img", {
-            attrs: { src: "/storage/200109_Nik_fotka.jpg", id: "profilPicture" }
+            attrs: {
+              src: "https://niklavric.com/storage/200109_Nik_fotka.jpg",
+              id: "profilPicture"
+            }
           })
         ])
       ])

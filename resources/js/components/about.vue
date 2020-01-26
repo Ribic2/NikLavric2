@@ -101,7 +101,7 @@
         </div>
         <div class = "col-xl-6 imageHolder">
             <div>
-                <img src="/storage/200109_Nik_fotka.jpg" id = "profilPicture">
+                <img src="https://niklavric.com/storage/200109_Nik_fotka.jpg" id = "profilPicture">
             </div>
         </div>
     </div>
