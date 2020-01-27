@@ -16,7 +16,7 @@ class PosnetkiMigration extends Migration
         Schema::create('Posnetki', function (Blueprint $table){
             $table->bigIncrements('idPosnetki');
             $table->string('naslovPosnetka')->nullable($value = false);
-            $table->string('opisPosnetka');
+            $table->longText('opisPosnetka');
             $table->string('videoLink');
             $table->string('thumbnail');
             $table->string('naslovPosnetkaApi');

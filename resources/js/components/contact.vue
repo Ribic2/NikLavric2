@@ -53,13 +53,14 @@
         line-height: 25px;
     }
     .socialMediaLink > a > img{
-        height: 100px;
-        width: 100px;
+        height: 27px;
+        width: 27px;
     }
     #socialMediaLinkHolder{
-        min-width: 200px;
-        max-width: 200px;
+        min-width: 55px;
+        max-width: 55px;
         width: auto;
+        padding-top: 10px;
         position: relative;
         top: 10px;
     }
@@ -70,6 +71,10 @@
         font-size: 14px;
         line-height: 19px;
         color: #000000;
+    }
+    #facebookLogo{
+        height: 21px;
+        width: 21px;
     }
     @media  screen and (max-width: 1140px){
        #Contacts{
@@ -108,7 +113,7 @@
                         <a href="https://www.instagram.com/niklavric/"><img src="https://niklavric.com/storage/Instagram.png"></a>
                     </div>
                     <div class="col-6 socialMediaLink">
-                        <a href="https://www.facebook.com/niklavric"><img src="https://niklavric.com/storage/Facebook_Logo.png"></a>
+                        <a href="https://www.facebook.com/niklavric"><img src="https://niklavric.com/storage/Facebook_Logo.png" id = "facebookLogo"></a>
                     </div>
                 </div>
             </div>

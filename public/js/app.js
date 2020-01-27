@@ -2041,6 +2041,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'about'
 });
@@ -2100,6 +2125,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2363,6 +2393,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2374,18 +2416,16 @@ __webpack_require__.r(__webpack_exports__);
       var image = document.getElementsByClassName('thumbnail')[e - 1];
       var thumbnailText = document.getElementsByClassName('thumbNailText')[e - 1];
       image.style.filter = "grayscale(100%)";
-      thumbnailText.style.display = "block";
+      thumbnailText.style.opacity = "1";
     },
     HiddeText: function HiddeText(e) {
       var image = document.getElementsByClassName('thumbnail')[e - 1];
       var thumbnailText = document.getElementsByClassName('thumbNailText')[e - 1];
       image.style.filter = "grayscale(0%)";
-      thumbnailText.style.display = "none";
+      thumbnailText.style.opacity = "0";
     },
     redirect: function redirect(e) {
-      var lowerCase = e.toLowerCase();
-      var path = lowerCase.split(' ').join('-');
-      window.location.href = "/work/" + path;
+      window.location.href = "/work/" + e;
     }
   },
   created: function created() {
@@ -2396,6 +2436,15 @@ __webpack_require__.r(__webpack_exports__);
     });
   }
 });
+
+window.onload = function () {
+  var image = document.getElementsByClassName('thumbnail');
+  var thumbnailText = document.getElementsByClassName('thumbNailText');
+
+  for (var i = 0; i < image.length; i++) {
+    image[i].classList.remove('fade');
+  }
+};
 
 /***/ }),
 
@@ -2528,7 +2577,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -7186,7 +7234,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-0b0aedd2]{\n    padding: 0px;\n    margin: 0px;\n}\n#contentArea[data-v-0b0aedd2]{\n    width: 100%;\n    margin-top: 10px;\n    padding-top: 10px;\n}\n.textHolder[data-v-0b0aedd2]{\n    width: 90%;\n    min-height: 200px;\n    height: auto;\n    float: left;\n}\n.imageHolder[data-v-0b0aedd2]{\n    width: 90%;\n    min-height: 500px;\n    height: auto;\n    float: right;\n}\n#profilPicture[data-v-0b0aedd2]{\n    height: 100%;\n    width: 100%;\n}\n@media only screen and (max-width: 575px){\n.textHolder[data-v-0b0aedd2]{\n       width: 100%;\n       float: none !important;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n        margin-top: 3vw;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n#profilPicture[data-v-0b0aedd2]{\n        position: relative;\n}\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n}\n@media only screen and (min-width: 576px) and (max-width: 767px){\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n        margin-top: 3vw;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n}\n@media only screen and (min-width: 768px) and (max-width: 911px){\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n        margin-top: 3vw;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n}\n@media only screen and (min-width: 912px) and (max-width: 1199px){\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n}\n\n/* Test you can delete after*/\n\n", ""]);
+exports.push([module.i, "\n*[data-v-0b0aedd2]{\n    padding: 0px;\n    margin: 0px;\n}\n#contentArea[data-v-0b0aedd2]{\n    width: 100%;\n    margin-top: 10px;\n    padding-top: 10px;\n}\n.textHolder[data-v-0b0aedd2]{\n    width: 90%;\n    min-height: 200px;\n    height: auto;\n    float: left;\n}\n.imageHolder[data-v-0b0aedd2]{\n    width: 90%;\n    min-height: 500px;\n    height: auto;\n    float: right;\n}\n#profilPicture[data-v-0b0aedd2]{\n    height: 100%;\n    width: 100%;\n    -webkit-animation: 0.7s ease-out fadeOut-data-v-0b0aedd2;\n            animation: 0.7s ease-out fadeOut-data-v-0b0aedd2;\n}\n#textHolder[data-v-0b0aedd2]{\n    width: 95%;\n}\n@-webkit-keyframes fadeOut-data-v-0b0aedd2 {\n0% {\n        opacity: 0;\n}\n100% {\n        opacity: 1;\n}\n}\n@keyframes fadeOut-data-v-0b0aedd2 {\n0% {\n        opacity: 0;\n}\n100% {\n        opacity: 1;\n}\n}\n@media only screen and (max-width: 575px){\n.textHolder[data-v-0b0aedd2]{\n       width: 100%;\n       float: none !important;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n        margin-top: 2%;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n#profilPicture[data-v-0b0aedd2]{\n        position: relative;\n}\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n#textHolder[data-v-0b0aedd2]{\n        width: 100%;\n}\n}\n@media only screen and (min-width: 576px) and (max-width: 767px){\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n        margin-top: 2%;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n#textHolder[data-v-0b0aedd2]{\n        width: 100%;\n}\n}\n@media only screen and (min-width: 768px) and (max-width: 911px){\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n        margin-top: 2%;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n#textHolder[data-v-0b0aedd2]{\n        width: 100%;\n}\n}\n@media only screen and (min-width: 912px) and (max-width: 1199px){\n.textHolder[data-v-0b0aedd2]{\n        min-height: 100px !important;\n        height: auto;\n}\n.imageHolder[data-v-0b0aedd2]{\n        float: none !important;\n        width: 100%;\n        margin-top: 1%;\n}\n#contentArea[data-v-0b0aedd2]{\n        padding-bottom: 10px;\n}\n#textHolder[data-v-0b0aedd2]{\n        width: 100%;\n}\n}\n\n/* Test you can delete after*/\n\n", ""]);
 
 // exports
 
@@ -7224,7 +7272,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-768395a5]{\n    padding: 0px;\n    margin: 0px;\n    font-family: 'Open Sans', sans-serif;\n}\n#contactInfo[data-v-768395a5]{\n    height: 504px;\n    margin-top: 10px;\n    padding-top: 10px;\n    width: 95%;\n}\n#formArea[data-v-768395a5]{\n    margin-top: 30px;\n}\nform[data-v-768395a5]{\n    margin-top: 30px;\n}\ninput[data-v-768395a5]{\n    width: 95%;\n    height: 39px;\n    left: 773px;\n    top: 332px;\n    border-radius: 0px;\n    background: #FFFFFF;\n    border: 1px solid #000000;\n    box-sizing: border-box;\n    border: none;\n    border-top: solid 1px black;\n    border-left: solid 1px black;\n    border-right: solid 1px black;\n}\ntextarea[data-v-768395a5]{\n    width: 95%;\n    height: 125px;\n    left: 773px;\n    top: 408px;\n    background: #FFFFFF;\n    resize: none;\n    border: 1px solid #000000;\n    box-sizing: border-box;\n}\n#submit[data-v-768395a5]{\n    width: 103px;\n    height: 39px;\n    margin-top: 20px;\n    background: #FFFFFF;\n    border: 1px solid #000000;\n    box-sizing: border-box;\n}\nh3[data-v-768395a5]{\n    font-size: 18px;\n    line-height: 25px;\n}\n.socialMediaLink > a > img[data-v-768395a5]{\n    height: 100px;\n    width: 100px;\n}\n#socialMediaLinkHolder[data-v-768395a5]{\n    min-width: 200px;\n    max-width: 200px;\n    width: auto;\n    position: relative;\n    top: 10px;\n}\nh4[data-v-768395a5]{\n    font-family: 'Open Sans', sans-serif;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 14px;\n    line-height: 19px;\n    color: #000000;\n}\n@media  screen and (max-width: 1140px){\n#Contacts[data-v-768395a5]{\n       height: 300px;\n}\ninput[data-v-768395a5]{\n       width: 60%;\n}\n}\n@media screen and (max-width: 575px){\n#contentArea[data-v-768395a5]{\n        padding-bottom: 10px;\n}\n#socialMediaLinkHolder[data-v-768395a5]{\n        width: 100%\n}\n}\n\n\n", ""]);
+exports.push([module.i, "\n*[data-v-768395a5]{\n    padding: 0px;\n    margin: 0px;\n    font-family: 'Open Sans', sans-serif;\n}\n#contactInfo[data-v-768395a5]{\n    height: 504px;\n    margin-top: 10px;\n    padding-top: 10px;\n    width: 95%;\n}\n#formArea[data-v-768395a5]{\n    margin-top: 30px;\n}\nform[data-v-768395a5]{\n    margin-top: 30px;\n}\ninput[data-v-768395a5]{\n    width: 95%;\n    height: 39px;\n    left: 773px;\n    top: 332px;\n    border-radius: 0px;\n    background: #FFFFFF;\n    border: 1px solid #000000;\n    box-sizing: border-box;\n    border: none;\n    border-top: solid 1px black;\n    border-left: solid 1px black;\n    border-right: solid 1px black;\n}\ntextarea[data-v-768395a5]{\n    width: 95%;\n    height: 125px;\n    left: 773px;\n    top: 408px;\n    background: #FFFFFF;\n    resize: none;\n    border: 1px solid #000000;\n    box-sizing: border-box;\n}\n#submit[data-v-768395a5]{\n    width: 103px;\n    height: 39px;\n    margin-top: 20px;\n    background: #FFFFFF;\n    border: 1px solid #000000;\n    box-sizing: border-box;\n}\nh3[data-v-768395a5]{\n    font-size: 18px;\n    line-height: 25px;\n}\n.socialMediaLink > a > img[data-v-768395a5]{\n    height: 27px;\n    width: 27px;\n}\n#socialMediaLinkHolder[data-v-768395a5]{\n    min-width: 55px;\n    max-width: 55px;\n    width: auto;\n    padding-top: 10px;\n    position: relative;\n    top: 10px;\n}\nh4[data-v-768395a5]{\n    font-family: 'Open Sans', sans-serif;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 14px;\n    line-height: 19px;\n    color: #000000;\n}\n#facebookLogo[data-v-768395a5]{\n    height: 21px;\n    width: 21px;\n}\n@media  screen and (max-width: 1140px){\n#Contacts[data-v-768395a5]{\n       height: 300px;\n}\ninput[data-v-768395a5]{\n       width: 60%;\n}\n}\n@media screen and (max-width: 575px){\n#contentArea[data-v-768395a5]{\n        padding-bottom: 10px;\n}\n#socialMediaLinkHolder[data-v-768395a5]{\n        width: 100%\n}\n}\n\n\n", ""]);
 
 // exports
 
@@ -7262,7 +7310,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-fa6affac]{\n    margin: 0px;\n    padding: 0px;\n    font-family: 'Open Sans', sans-serif;\n}\n.Projekt[data-v-fa6affac]{\n    height: 400px;\n    padding-top: 10px;\n}\n.Projekt[data-v-fa6affac]:hover{\n    cursor: pointer;\n}\n#Projects[data-v-fa6affac]{\n    width: 100%;\n    position: relative;\n    margin-top: 10px;\n    padding-bottom: 50px;\n}\n.projectVideo[data-v-fa6affac]{\n    width: 97.5%;\n    height: 100%;\n    margin: 0 auto;\n    position: relative;\n}\n.thumbNailText[data-v-fa6affac]{\n    height: 20%;\n    position: absolute;\n    width: 100%;\n    font-family: 'Open Sans', sans-serif;\n    text-align: center;\n    bottom: 40%;\n    margin: 0 auto;\n    display: none;\n    color: white;\n    -webkit-transition: 0.1s;\n    transition: 0.1s;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 18px;\n    text-shadow: 0px 8px 9px black;\n}\n.thumbnail[data-v-fa6affac]{\n    height: 100%;\n    width: 100%;\n}\n@media only screen and (min-width: 1200px){\n.thumbnail[data-v-fa6affac]{\n        min-height: 360px;\n}\n.Projekt[data-v-fa6affac]{\n        height: auto;\n}\n}\n@media only screen and (max-width: 1140px){\n.Projekt[data-v-fa6affac]{\n        height: auto;\n}\n}\n@media only screen and (min-width: 992px) and (max-width: 1199px){\n.thumbnail[data-v-fa6affac]{\n        height: 30vw;\n        min-height: 453px;\n}\n.Projekt[data-v-fa6affac]{\n        height: auto;\n}\n}\n@media only screen and (min-width: 768px) and (max-width: 991px){\n.thumbnail[data-v-fa6affac]{\n        height: 30vw;\n        min-height: 336px\n}\n}\n@media only screen and (min-width: 576px) and (max-width: 767px){\n.thumbnail[data-v-fa6affac]{\n        min-height: 450px;\n        height: 55vw;\n}\n}\n@media only screen and (max-width: 575px){\n.thumbnail[data-v-fa6affac]{\n        min-height: 250px;\n        height: 85vw;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n*[data-v-fa6affac]{\n    margin: 0px;\n    padding: 0px;\n    font-family: 'Open Sans', sans-serif;\n}\n.Projekt[data-v-fa6affac]{\n    height: 400px;\n    padding-top: 10px;\n}\n.Projekt[data-v-fa6affac]:hover{\n    cursor: pointer;\n}\n#Projects[data-v-fa6affac]{\n    width: 100%;\n    position: relative;\n    margin-top: 10px;\n    padding-bottom: 50px;\n}\n.projectVideo[data-v-fa6affac]{\n    width: 97.5%;\n    height: 100%;\n    margin: 0 auto;\n    position: relative;\n}\n.thumbNailText[data-v-fa6affac]{\n    height: 100%;\n    width: 80%;\n    position: absolute;\n    font-family: 'Open Sans', sans-serif;\n    text-align: center;\n    bottom: 0%;\n    left: 10%;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n            align-items: center;\n    color: white;\n    -webkit-transition: 0.1s;\n    transition: 0.1s;\n    opacity: 0;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 18px;\n    text-shadow: 0px 8px 9px black;\n}\n.thumbnail[data-v-fa6affac]{\n    height: 100%;\n    width: 100%;\n    -webkit-animation: 0.7s ease-out fadeOut-data-v-fa6affac;\n            animation: 0.7s ease-out fadeOut-data-v-fa6affac;\n    margin: 0 auto;\n}\n@-webkit-keyframes fadeOut-data-v-fa6affac {\n0% {\n        opacity: 0;\n}\n100% {\n        opacity: 1;\n}\n}\n@keyframes fadeOut-data-v-fa6affac {\n0% {\n        opacity: 0;\n}\n100% {\n        opacity: 1;\n}\n}\n@media only screen and (min-width: 1200px){\n.thumbnail[data-v-fa6affac]{\n        min-height: 360px;\n}\n.Projekt[data-v-fa6affac]{\n        height: auto;\n}\n}\n@media only screen and (max-width: 1140px){\n.Projekt[data-v-fa6affac]{\n        height: auto;\n}\n}\n@media only screen and (min-width: 992px) and (max-width: 1199px){\n.thumbnail[data-v-fa6affac]{\n        height: 30vw;\n        min-height: 453px;\n}\n.Projekt[data-v-fa6affac]{\n        height: auto;\n}\n}\n@media only screen and (min-width: 768px) and (max-width: 991px){\n.thumbnail[data-v-fa6affac]{\n        height: 30vw;\n        min-height: 336px\n}\n}\n@media only screen and (min-width: 576px) and (max-width: 767px){\n.thumbnail[data-v-fa6affac]{\n        min-height: 450px;\n        height: 55vw;\n}\n}\n@media only screen and (max-width: 575px){\n.thumbnail[data-v-fa6affac]{\n        min-height: 250px;\n        height: 85vw;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -7300,7 +7348,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-ab509080]{\n    padding: 0px;\n    margin: 0px;\n    font-family: 'Open Sans', sans-serif;\n}\n#Projects[data-v-ab509080]{\n    width: 100%;\n    position: relative;\n    margin-top: 10px;\n    padding-bottom: 50px;\n}\n.display[data-v-ab509080]{\n    width: 100%;\n}\n#videoHolder[data-v-ab509080]{\n    min-height: 250px;\n    width: 100%;\n    height: 30vw;\n}\n#videoTitle[data-v-ab509080]{\n    padding-top: 10px;\n    padding-bottom: 10px;\n    font-size: 18px;\n}\n#videoDescription[data-v-ab509080]{\n    margin-top: 10px;\n}\n.title[data-v-ab509080]{\n    font-weight:600;\n}\n@media only screen and (min-width: 1200px){\n#videoHolder[data-v-ab509080]{\n        height: 30vw;\n        min-height: 300px;\n}\n}\n@media only screen and (min-width: 992px) and (max-width: 1199px){\n#videoHolder[data-v-ab509080]{\n        height: 40vw;\n        min-height: 500px;\n}\n}\n@media only screen and (min-width: 768px) and (max-width: 991px){\n#videoHolder[data-v-ab509080]{\n        height: 40vw;\n        min-height: 300px;\n}\n}\n@media only screen and (max-width: 575px){\n#videoHolder[data-v-ab509080]{\n        height: 50vw;\n        min-height: 300px;\n}\n}\n", ""]);
+exports.push([module.i, "\n*[data-v-ab509080]{\n    padding: 0px;\n    margin: 0px;\n    font-family: 'Open Sans', sans-serif;\n}\n#Projects[data-v-ab509080]{\n    width: 100%;\n    position: relative;\n    margin-top: 20px;\n    padding-bottom: 50px;\n}\n.display[data-v-ab509080]{\n    width: 100%;\n}\n#videoHolder[data-v-ab509080]{\n    min-height: 250px;\n    width: 100%;\n    height: 30vw;\n}\n#videoTitle[data-v-ab509080]{\n    padding-top: 10px;\n    font-size: 18px;\n}\n#videoDescription[data-v-ab509080]{\n    margin-top: 10px;\n}\n.title[data-v-ab509080]{\n    font-weight:600;\n}\n@media only screen and (min-width: 1200px){\n#videoHolder[data-v-ab509080]{\n        height: 30vw;\n        min-height: 300px;\n}\n}\n@media only screen and (min-width: 992px) and (max-width: 1199px){\n#videoHolder[data-v-ab509080]{\n        height: 40vw;\n        min-height: 500px;\n}\n}\n@media only screen and (min-width: 768px) and (max-width: 991px){\n#videoHolder[data-v-ab509080]{\n        height: 40vw;\n        min-height: 300px;\n}\n}\n@media only screen and (max-width: 575px){\n#videoHolder[data-v-ab509080]{\n        height: 50vw;\n        min-height: 300px;\n}\n}\n", ""]);
 
 // exports
 
@@ -41305,8 +41353,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row", attrs: { id: "contentArea" } }, [
-      _c("div", { staticClass: "col-xl-6 textHolder", attrs: { id: "text" } }, [
-        _c("div", [
+      _c("div", { staticClass: "col-xl-6 textHolder" }, [
+        _c("div", { attrs: { id: "textHolder" } }, [
           _c("p", [
             _vm._v(
               "Born in Novo mesto in 1998, Nik Lavrič is a young Slovenian editor and colorist. He studied multimedia production at IAM Ljubljana. "
@@ -41324,7 +41372,7 @@ var staticRenderFns = [
         _c("div", [
           _c("img", {
             attrs: {
-              src: "https://niklavric.com/storage/200109_Nik_fotka.jpg",
+              src: "https://niklavric.com//storage/200109_Nik_fotka.jpg",
               id: "profilPicture"
             }
           })
@@ -41434,7 +41482,8 @@ var staticRenderFns = [
                   [
                     _c("img", {
                       attrs: {
-                        src: "https://niklavric.com/storage/Facebook_Logo.png"
+                        src: "https://niklavric.com/storage/Facebook_Logo.png",
+                        id: "facebookLogo"
                       }
                     })
                   ]
@@ -41512,7 +41561,7 @@ var render = function() {
                   return _vm.HiddeText(projekt.idPosnetki)
                 },
                 click: function($event) {
-                  return _vm.redirect(projekt.naslovPosnetka)
+                  return _vm.redirect(projekt.naslovPosnetkaApi)
                 }
               }
             }),
@@ -41523,7 +41572,7 @@ var render = function() {
                 staticClass: "thumbNailText",
                 on: {
                   click: function($event) {
-                    return _vm.redirect(projekt.naslovPosnetka)
+                    return _vm.redirect(projekt.naslovPosnetkaApi)
                   },
                   mouseover: function($event) {
                     return _vm.DisplayText(projekt.idPosnetki)

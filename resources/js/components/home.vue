@@ -24,16 +24,19 @@
         position: relative;
     }
     .thumbNailText{
-        height: 20%;
+        height: 100%;
+        width: 80%;
         position: absolute;
-        width: 100%;
         font-family: 'Open Sans', sans-serif;
         text-align: center;
-        bottom: 40%;
-        margin: 0 auto;
-        display: none;
+        bottom: 0%;
+        left: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: white;
         transition: 0.1s;
+        opacity: 0;
         font-style: normal;
         font-weight: normal;
         font-size: 18px;
@@ -42,6 +45,16 @@
     .thumbnail{
         height: 100%;
         width: 100%;
+        animation: 0.7s ease-out  fadeOut;
+        margin: 0 auto;
+    }
+    @keyframes fadeOut {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
     }
     @media only screen and (min-width: 1200px){
         .thumbnail{
@@ -88,10 +101,9 @@
 <template>
     <div class="row" id = "Projects">
         <div class = "col-xl-4 col-md-6 Projekt" v-for="projekt in posnetkiData" v-bind:key="projekt.idPosnetki">
-
             <div class = "projectVideo">
-                <img class = "thumbnail" v-bind:src = "'/storage/' + projekt.thumbnail" @mouseover="DisplayText(projekt.idPosnetki)" @mouseleave="HiddeText(projekt.idPosnetki)" v-on:click="redirect(projekt.naslovPosnetka)">
-                <h3 class = "thumbNailText" v-on:click="redirect(projekt.naslovPosnetka)" @mouseover="DisplayText(projekt.idPosnetki)" @mouseleave="HiddeText(projekt.idPosnetki)">{{ projekt.naslovPosnetka.toUpperCase() }}</h3>
+                <img class = "thumbnail" v-bind:src = "'/storage/' + projekt.thumbnail" @mouseover="DisplayText(projekt.idPosnetki)" @mouseleave="HiddeText(projekt.idPosnetki)" v-on:click="redirect(projekt.naslovPosnetkaApi)">
+                <h3 class = "thumbNailText" v-on:click="redirect(projekt.naslovPosnetkaApi)" @mouseover="DisplayText(projekt.idPosnetki)" @mouseleave="HiddeText(projekt.idPosnetki)">{{ projekt.naslovPosnetka.toUpperCase() }}</h3>
             </div>
         </div>
     </div>
@@ -110,26 +122,32 @@
                 var thumbnailText = document.getElementsByClassName('thumbNailText')[e-1];
 
                 image.style.filter = "grayscale(100%)";
-                thumbnailText.style.display = "block";
+                thumbnailText.style.opacity = "1";
             },
             HiddeText: function(e){
                 var image = document.getElementsByClassName('thumbnail')[e-1];
                 var thumbnailText = document.getElementsByClassName('thumbNailText')[e-1];
 
                 image.style.filter = "grayscale(0%)";
-                thumbnailText.style.display = "none";
+                thumbnailText.style.opacity = "0";
             },
             redirect: function(e){
-                var lowerCase = e.toLowerCase();
-                var path = lowerCase.split(' ').join('-');
-                window.location.href = "/work/"+path;
+                window.location.href = "/work/"+e;
             }
         },
         created: function(){
             axios.get("https://niklavric.com/api/posnetki").then((response) => {
                 this.posnetkiData = response.data.data;
-
             });
+        }
+    }
+
+    window.onload = function(){
+        var image = document.getElementsByClassName('thumbnail');
+        var thumbnailText = document.getElementsByClassName('thumbNailText')
+
+        for(var i = 0; i < image.length; i++){
+            image[i].classList.remove('fade');
         }
     }
 

@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
 
             [
                 'idPosnetki' => 1,
-                'naslovPosnetka' => 'Ford Slovenija Slovenija Winter campaign 2020',
+                'naslovPosnetka' => 'Ford Slovenija Winter campaign 2020',
                 'opisPosnetka' => 'Client: Ford Slovenija;Production: Lab 007;Producer: Lea Bajt;Director: Miha Kačič;DOP: Rožle Bregar, Peter Perunović;Post production: Nik Lavrič',
                 'videoLink' => 'https://www.youtube.com/embed/rtiYy29ueTo?list=PLyEfQXlqMsZCqtJE0O1ud2QXb3DugfRQi',
                 'thumbnail' => 'ford_01.jpg',
@@ -92,7 +92,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'idPosnetki' => 8,
-                'naslovPosnetka' => 'Jan Plestenjak Kvatropirci & Coto Res je dober dan',
+                'naslovPosnetka' => 'Jan Plestenjak, Kvatropirci & Coto - Res je dober dan',
                 'opisPosnetka' => 'Client: Jan Plestenjak;
                 Production: Instant;
                 Director and DOP: Vladan Janković;
@@ -122,7 +122,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'idPosnetki' => 10,
-                'naslovPosnetka' => 'Bartog Logistic center',
+                'naslovPosnetka' => 'Bartog - Logistic center',
                 'opisPosnetka' => 'Production: Real Frame;
                 DOP: Jernej Auguštin;
                 Edit: Jernej Auguštin;

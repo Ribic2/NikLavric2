@@ -26,7 +26,7 @@
     #Projects{
         width: 100%;
         position: relative;
-        margin-top: 10px;
+        margin-top: 20px;
         padding-bottom: 50px;
     }
     .display{
@@ -39,7 +39,6 @@
     }
     #videoTitle{
         padding-top: 10px;
-        padding-bottom: 10px;
         font-size: 18px;
     }
     #videoDescription{
