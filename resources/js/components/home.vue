@@ -14,6 +14,7 @@
     #Projects{
         width: 100%;
         position: relative;
+        overflow: auto;
         margin-top: 10px;
         padding-bottom: 50px;
     }
