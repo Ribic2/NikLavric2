@@ -22,7 +22,7 @@
         font-weight: normal;
         font-size: 18px;
         line-height: 25px;
-        color: #000000;
+        color: #000000 !important;
     }
     /*Text after Nik Lavrič text*/
     #EditorColorist{

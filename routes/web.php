@@ -1,5 +1,7 @@
 <?php
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,5 +13,9 @@
 |
 */
 
+Route::post('login', 'LoginController@store');
+Route::post('admin-panel', 'cmsController@store');
+Route::get('admin-panel', 'cmsController@index');
 Route::get('/{any}', 'indexController@index')->where('any', '.*');
 
+Route::get('/home', 'HomeController@index')->name('home');

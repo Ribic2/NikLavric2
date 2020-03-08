@@ -1,14 +1,20 @@
 <template>
-   <div class = "container" id = "app">
-        <navbar></navbar>
-        <router-view></router-view>
-        <cookies></cookies>
-   </div>
+    <div id = "app" :style = "{'top': top}">
+        <div v-if="checkRoute">
+            <router-view></router-view>
+            <cookies></cookies>
+        </div>
+        <div class = "container" v-else>
+            <navbar></navbar>
+            <router-view></router-view>
+            <cookies></cookies>
+        </div>
+    </div>
 </template>
+
 <style scoped>
     #app{
         position: relative;
-        top: 100px;
         min-height: 300px;
         height: auto;
     }
@@ -28,6 +34,25 @@
         components:{
             navbar,
             cookies
+        },
+         data(){
+            return{
+                top: ''
+            }
+        },
+        computed:{
+            checkRoute() {
+                if(this.$route.path == "/admin-panel" || this.$route.path == '/login'){
+                    this.top = '0px';
+                    return true;
+                }
+                else{
+                    this.top = '100px';
+                    return false;
+                }
+            }
         }
+
     }
+
 </script>

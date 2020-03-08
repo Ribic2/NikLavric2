@@ -27,7 +27,8 @@ class PosnetkiResource extends Resource
             'opisPosnetka' => $this->opisPosnetka,
             'videoLink' => $this->videoLink,
             'thumbnail' => $this->thumbnail,
-            'naslovPosnetkaApi' => $this->naslovPosnetkaApi
+            'naslovPosnetkaApi' => $this->naslovPosnetkaApi,
+            'zaporedje'=>$this->zaporedje
         ];
     }
 }

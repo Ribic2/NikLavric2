@@ -21,6 +21,7 @@ class PosnetkiMigration extends Migration
             $table->string('thumbnail');
             $table->string('naslovPosnetkaApi');
         });
+
     }
 
     /**

@@ -103,8 +103,8 @@
     <div class="row" id = "Projects">
         <div class = "col-xl-4 col-md-6 Projekt" v-for="projekt in posnetkiData" v-bind:key="projekt.idPosnetki">
             <div class = "projectVideo">
-                <img class = "thumbnail" v-bind:src = "'/storage/' + projekt.thumbnail" @mouseover="DisplayText(projekt.idPosnetki)" @mouseleave="HiddeText(projekt.idPosnetki)" v-on:click="redirect(projekt.naslovPosnetkaApi)">
-                <h3 class = "thumbNailText" v-on:click="redirect(projekt.naslovPosnetkaApi)" @mouseover="DisplayText(projekt.idPosnetki)" @mouseleave="HiddeText(projekt.idPosnetki)">{{ projekt.naslovPosnetka.toUpperCase() }}</h3>
+                <img class = "thumbnail" v-bind:src = "'/storage/' + projekt.thumbnail" @mouseover="DisplayText(projekt.id)" @mouseleave="HiddeText(projekt.id)" v-on:click="redirect(projekt.naslovPosnetkaApi)">
+                <h3 class = "thumbNailText" v-on:click="redirect(projekt.naslovPosnetkaApi)" @mouseover="DisplayText(projekt.id)" @mouseleave="HiddeText(projekt.id)">{{ projekt.naslovPosnetka.toUpperCase() }}</h3>
             </div>
         </div>
     </div>
@@ -119,15 +119,15 @@
         },
         methods:{
             DisplayText: function(e){
-                var image = document.getElementsByClassName('thumbnail')[e-1];
-                var thumbnailText = document.getElementsByClassName('thumbNailText')[e-1];
+                var image = document.getElementsByClassName('thumbnail')[e];
+                var thumbnailText = document.getElementsByClassName('thumbNailText')[e];
 
                 image.style.filter = "grayscale(100%)";
                 thumbnailText.style.opacity = "1";
             },
             HiddeText: function(e){
-                var image = document.getElementsByClassName('thumbnail')[e-1];
-                var thumbnailText = document.getElementsByClassName('thumbNailText')[e-1];
+                var image = document.getElementsByClassName('thumbnail')[e];
+                var thumbnailText = document.getElementsByClassName('thumbNailText')[e];
 
                 image.style.filter = "grayscale(0%)";
                 thumbnailText.style.opacity = "0";
@@ -137,8 +137,15 @@
             }
         },
         created: function(){
-            axios.get("https://niklavric.com/api/posnetki").then((response) => {
+            axios.get("http://127.0.0.1:8000/api/posnetki").then((response) => {
                 this.posnetkiData = response.data.data;
+            })
+            .then(()=>{
+                console.log(Object.keys(this.posnetkiData));
+                console.log(Object.keys(this.posnetkiData).length);
+                for(var i = 0; i < (Object.keys(this.posnetkiData).length); i++){
+                    this.posnetkiData[i].id = i
+                }
             });
         }
     }
