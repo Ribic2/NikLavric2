@@ -91,7 +91,7 @@ export default {
                 this.responseData = "Missing credentials."
             }
             else{
-                axios.post('https://niklavric.com/login', {
+                axios.post('http://127.0.0.1:8000/login', {
                     username: this.username,
                     password: this.password
                 })

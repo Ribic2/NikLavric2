@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\user as Users;
+use Illuminate\Support\Facades\Auth;
 
 
 class LoginController extends Controller
@@ -41,17 +42,15 @@ class LoginController extends Controller
         $password = $request->input('password');
         $hashed_random_string = Hash::make("sdadsadasgfag");
 
-        $user = Users::where('username', $username)
-        ->where('password', bcrypt($password))
-        ->get();
 
+        $user = Users::where('username', $username)->get();
         if(count($user) > 0){
-            session(['key'=> $hashed_random_string]);
-            return 1;
+            if(Hash::check($password, $user[0]->password)){
+                session(['key' => $hashed_random_string]);
+                return 1;
+            }
+            return "Username or password is incorrect!";
         }
-
-        return "Username or password is incorrect!";
-
     }
     /**
      * Display the specified resource.
