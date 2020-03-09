@@ -13,7 +13,7 @@ class PosnetkiMigration extends Migration
      */
     public function up()
     {
-        Schema::create('Posnetki', function (Blueprint $table){
+        Schema::create('posnetki', function (Blueprint $table){
             $table->bigIncrements('idPosnetki');
             $table->string('naslovPosnetka')->nullable($value = false);
             $table->longText('opisPosnetka');
