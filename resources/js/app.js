@@ -6,7 +6,6 @@ import VueRouter from 'vue-router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.min.css'
 
 import about from './components/about.vue'
 import contact from  './components/contact.vue'
