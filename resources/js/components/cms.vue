@@ -243,7 +243,6 @@
                 data.append('apiNaslovPosnetka', this.apiNaslovPosnetka);
                 data.append('zaporedje', Object.keys(this.posnetkiData).length+1);
 
-                console.log(Object.keys(this.posnetkiData).length+1)
                 axios.post('https://niklavric.com/admin-panel', data, settings)
                 .then(response => {
                     this.posnetkiData = response.data.data;

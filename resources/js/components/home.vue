@@ -137,12 +137,10 @@
             }
         },
         created: function(){
-            axios.get("http://127.0.0.1:8000/api/posnetki").then((response) => {
+            axios.get("https://niklavric.com/api/posnetki").then((response) => {
                 this.posnetkiData = response.data.data;
             })
             .then(()=>{
-                console.log(Object.keys(this.posnetkiData));
-                console.log(Object.keys(this.posnetkiData).length);
                 for(var i = 0; i < (Object.keys(this.posnetkiData).length); i++){
                     this.posnetkiData[i].id = i
                 }
