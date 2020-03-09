@@ -217,7 +217,7 @@
             }
         },
         created: function(){
-            axios.get("http://127.0.0.1:8000/api/posnetki").then((response) => {
+            axios.get("https://niklavric.com/posnetki").then((response) => {
                 this.posnetkiData = response.data.data;
             })
             .then(()=>{
@@ -244,7 +244,7 @@
                 data.append('zaporedje', Object.keys(this.posnetkiData).length+1);
 
                 console.log(Object.keys(this.posnetkiData).length+1)
-                axios.post('http://127.0.0.1:8000/admin-panel', data, settings)
+                axios.post('https://niklavric.com/admin-panel', data, settings)
                 .then(response => {
                     this.posnetkiData = response.data.data;
                 });
@@ -285,7 +285,7 @@
                         }
                     }
 
-                    axios.post('http://127.0.0.1:8000/admin-panel', {
+                    axios.post('https://niklavric.com/admin-panel', {
                         sendByUser: true,
                         type: "change",
                         id: this.posnetkiData[e].idPosnetki,
@@ -327,7 +327,7 @@
 
 
 
-                axios.post('http://127.0.0.1:8000/admin-panel',{
+                axios.post('https://niklavric.com/admin-panel',{
                     id:e,
                     sendByUser: true,
                     type: "delete",

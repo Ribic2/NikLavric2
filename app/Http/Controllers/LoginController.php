@@ -42,7 +42,7 @@ class LoginController extends Controller
         $hashed_random_string = Hash::make("sdadsadasgfag");
 
         $user = Users::where('username', $username)
-        ->where('password',md5($password))
+        ->where('password', bcrypt($password))
         ->get();
 
         if(count($user) > 0){

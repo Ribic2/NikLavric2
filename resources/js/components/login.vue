@@ -91,13 +91,13 @@ export default {
                 this.responseData = "Missing credentials."
             }
             else{
-                axios.post('/login', {
+                axios.post('https://niklavric.com/login', {
                     username: this.username,
                     password: this.password
                 })
                 .then((res)=>{
                     if(res.data == 1){
-                        window.location.href = "/admin-panel"
+                        window.location.href = "https://niklavric.com/admin-panel"
                     }
                     else{
                         this.responseData = res.data;
