@@ -217,7 +217,7 @@
             }
         },
         created: function(){
-            axios.get("https://niklavric.com/posnetki").then((response) => {
+            axios.get("https://niklavric.com/api/posnetki").then((response) => {
                 this.posnetkiData = response.data.data;
             })
             .then(()=>{
