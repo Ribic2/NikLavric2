@@ -6,7 +6,7 @@
             </md-app-toolbar>
         </md-app>
         <md-content>
-            <form action="" enctype="multipart/form-data" method="POST">
+            <form>
                 <div>
                     <md-field class = "md-field">
                         <label>Naslov posnetka</label>
@@ -38,47 +38,31 @@
                         <md-textarea  class = "input" id = "opisPosnetka" v-model="opisPosnetka"></md-textarea>
                     </md-field>
                     <md-button class="md-raised md-primary" id = "addButton" @click="addData()">Dodaj</md-button>
+
                 </div>
             </form>
             <hr>
-            <li class="list-group-item sortable" v-for="posnetek in posnetkiData" :key="posnetek.idPosnetki">
-                <form enctype="multipart/form-data" method="POST">
-                    <div class="blockHolder">
-                        <p class = "idPosnetki element" :value = "posnetek.idPosnetki">Id {{ posnetek.idPosnetki }}</p>
+            <draggable ghost-class="ghost" @end="onEnd">
+                <transition-group type = "transition" name="flip-list">
+                    <div class = "sortable" v-for="posnetek in posnetkiData" :key="posnetek.idPosnetki">
+                        <p class = "id">Id: {{ posnetek.idPosnetki }}</p>
+                        <form method="POST">
+                            <input type="text" placeholder="Naslov posnetka" :value="posnetek.naslovPosnetka" class = "naslovPosnetka changeInputField">
+                            <input type="text" placeholder="Video link" :value="posnetek.videoLink" class = "videoLink changeInputField">
+                            <input type="text" placeholder="Naslov posnetka api" :value="posnetek.naslovPosnetkaApi" class = "naslovPosnetkaApi changeInputField">
+                            <textarea placeholder="Opis posnetka" :value="posnetek.opisPosnetka" class = "opisPosnetka changeTextArea" rows = "8"></textarea>
+                        </form>
+                        <button @click = "deleteData(posnetek.id)" class = "deleteButton button">Delete</button>
+                        <button @click = "changeData(posnetek.id)" class = "changeButton button">Spremeni</button>
                     </div>
-
-                    <div class="blockHolder">
-                        <label>Zaporedje</label>
-                        <input type="text" :value = "posnetek.zaporedje" class = "zaporedje element">
-                    </div>
-
-                    <div class="blockHolder">
-                        <label>Naslov posnetka</label>
-                        <input type="text" :value = "posnetek.naslovPosnetka" class = "naslovProjekta element">
-                    </div>
-
-                    <div class="blockHolder">
-                        <label>Link video posnetka</label>
-                        <input type="text" :value = "posnetek.videoLink" class = "videoLink element">
-                    </div>
-
-                    <div class="blockHolder">
-                        <label>Ime slike</label>
-                        <input type="text" :value = "posnetek.thumbnail" class = "thumbnail element">
-                    </div>
-
-                    <div class="blockHolder">
-                        <label>Naslov posnetka API</label>
-                        <input type="text" :value = "posnetek.naslovPosnetkaApi" class = "naslovPosnetkaApi element">
-                    </div>
-
-
-                    <textarea :value="posnetek.opisPosnetka" class = "opisPosnetka element"></textarea>
-                </form>
-            	<button @click = "changeData(posnetek.id)" class = "changeButton">Spremeni</button>
-                <button @click = "deleteData(posnetek.idPosnetki)" class = "deleteButton">Izbriši</button>
-            </li>
+                </transition-group>
+            </draggable>
         </md-content>
+
+        <md-snackbar :md-position="position" :md-duration="isInfinity ? Infinity : duration" :md-active.sync="showSnackbar" md-persistent>
+            <p id = "errorDisplay">{{ filterErrorMessage }}</p>
+        </md-snackbar>
+
     </div>
 </template>
 
@@ -115,94 +99,91 @@
         margin: 5px;
         height: 50px;
     }
-    .modify{
-        height: 40px;
-        width: 100%;
+    .input{
         position: relative;
-        bottom: 50px;
+        top: 15px;
     }
+    #errorDisplay{
+        text-align: center;
+        width: 100%;
+        height: 100%;
+    }
+    /*Change, edit, delete part */
     .sortable{
         width: 100%;
-    }
-    .input{
-        margin-top: 20px;
-        resize: none;
-    }
-    li{
-        min-height: 50px;
+        min-height: 100px;
         height: auto;
-        margin-top: 10px;
-    }
-    .list-group-item:hover{
-        transition: 0.5s;
-        box-shadow: 0px 5px 10px rgba(0, 0, 1, 0.5);
-    }
-    /* Elements of every li element */
-    .element{
-        display: inline;
         margin: 5px;
+        margin-top: 10px;
+        border: solid 1px black;
     }
-    .deleteButton{
-        background-color: red;
-        border: solid 1px red;
+    .sortable:hover{
+        cursor: move;
+
+    }
+    .sortable-drag{
+        opacity: 0;
+    }
+    .flip-list-move{
+        transition: transform 0.5s;
     }
     .changeButton{
         background-color: green;
         border: solid 1px green;
     }
-    .changeButton, .deleteButton{
-        margin: 5px;
+    .deleteButton{
+        background-color: red;
+        border: solid 1px red;
+    }
+    .button{
         color: white;
-        min-width: 100px;
-        max-width: 200px;
-        width: auto;
-        height: 40px;
+        margin: 5px;
+        height: 50px;
+        width: 200px;
     }
-    .changeButton:active, .deleteButton:active{
-        opacity: 0.5;
-        transition: 0.5s;
+    .changeInputField{
+        margin: 5px;
+        width: 32.3%;
+        height: 50px;
     }
-    textarea{
-        width: 99%;
-        min-height: 150px;
-        height: auto;
-        resize: none;
-        margin-top: 5px;
-        display: block !important;
-    }
-    .changeFileUpload{
-        width: 90%;
+    .changeTextArea{
+        resize: none !important;
         position: relative;
-        top: 15px;
-    }
-    .changeFileUploadHolder{
         width: 99%;
+        margin: 5px;
+        display: block;
     }
-    .blockHolder{
-        display: inline;
+    .id{
+        margin: 5px;
     }
-
     /*Responsive section */
-    @media only screen and (max-width: 575px){
-        .blockHolder{
-            display: block;
-        }
-        .element{
-            width: 90%;
-        }
+    @media only screen and (max-width: 767px){
         .header{
             height: 64px;
+        }
+        .changeInputField, .changeTextArea{
+            display: block;
+            width: 98%;
         }
     }
     @media only screen and (min-width: 600px) and (max-width: 960px){
         .header{
             height: 64px;
         }
+        .changeInputField, .changeTextArea{
+            display: block;
+            width: 98%;
+        }
     }
 </style>
 
 <script>
-    export default{
+    import draggable from 'vuedraggable'
+
+    export default {
+        components:{
+            draggable
+        },
         data(){
             return{
                 posnetkiData: '',
@@ -212,10 +193,15 @@
                 thumbnail: '',
                 apiNaslovPosnetka: '',
                 thumbnailName: '',
-                oldIndex: '',
-                newIndex: '',
+                filterErrorMessage: '',
+                //Snackbar
+                showSnackbar: false,
+                position: 'center',
+                duration: 4000,
+                isInfinity: false
             }
         },
+        //When page is loaded it calls to API and stores returned data into global variable
         created: function(){
             axios.get("https://niklavric.com/api/posnetki").then((response) => {
                 this.posnetkiData = response.data.data;
@@ -227,111 +213,174 @@
             });
         },
         methods:{
+            //Filters all the data if its correct
+            checkData(){
+                //Variables that check if data that was submited is correct before sending it to database
+
+                if(this.naslovPosnetka == "" || this.videoLink == "" || this.thumbnailName == "" || this.thumbnail == null || this.opisPosnetka == "" || this.apiNaslovPosnetka == ""){
+                    this.showSnackbar = true
+                    this.filterErrorMessage = "Some fields are empty.";
+                    return false;
+                }
+
+                var checkVideoLink = false;
+                var checkImageName = false;
+
+                //Checks apiNaslovPosnetka is correct, if it have '-' insted of spaces
+                //If not then it splits it and joins it on '-'
+                var split = this.apiNaslovPosnetka.split(' ');
+                var splitJoin = split.join('-');
+                this.apiNaslovPosnetka = splitJoin.toLowerCase()
+
+                //Check if provided video link is valid
+                if(this.videoLink.includes("embed"))
+                {
+                    var checkVideoLink = true;
+                }
+
+                //Checks if image name contains extenstion
+                if(!this.thumbnailName.includes(".")){
+                    checkImageName = true;
+                }
+
+                if(checkVideoLink && checkVideoLink){
+                    return true;
+                }
+                this.showSnackbar = true
+                this.filterErrorMessage = "Some of the given data is not correct.";
+                return false;
+            },
+            //Adds news record to database
             addData(){
-                //Add data to database
+
+                //Gets image file
                 let thumbnail = document.getElementById('thumbnail').files[0];
                 let data = new FormData();
+
+                //Sets header to multipart/form-data so it can send files
                 let settings = { headers: { 'Content-type': 'multipart/form-data' } };
 
-                data.append('image', thumbnail);
-                data.append('sendByUser', true);
-                data.append('type', 'add');
-                data.append('imageName', this.thumbnailName);
-                data.append('naslovPosnetka', this.naslovPosnetka);
-                data.append('opisPosnetka', this.opisPosnetka);
-                data.append('videoLink', this.videoLink);
-                data.append('apiNaslovPosnetka', this.apiNaslovPosnetka);
-                data.append('zaporedje', Object.keys(this.posnetkiData).length+1);
-
-                axios.post('https://niklavric.com/admin-panel', data, settings)
-                .then(response => {
-                    this.posnetkiData = response.data.data;
-                });
-            },
-            //Changes data
-            changeData(e){
-                //Data of inputs
-
-                var indexOfElementsArray = [];
-                var zaporedjeArray = [];
-
-                var naslovProjekta = document.getElementsByClassName('naslovProjekta')
-                var idPosnetki = document.getElementsByClassName('idPosnetki')
-                var opisProjekta = document.getElementsByClassName('opisPosnetka')
-                var videoLink = document.getElementsByClassName('videoLink')
-                var thumbnail = document.getElementsByClassName('thumbnail')
-                var zaporedje = document.getElementsByClassName('zaporedje')
-                var naslovPosnetkaApi = document.getElementsByClassName('naslovPosnetkaApi')
-                //New image code
-
-                //Validates the user data
-
-
-                    //Pregleduje zaporedja
-                    for(var i = 0; i <Object.keys(this.posnetkiData).length; i++){
-                        if(this.posnetkiData[i].zaporedje != zaporedje[e].value){
-                           zaporedjeArray.push(this.posnetkiData[i].zaporedje)
-                        }
-                        else{
-                            console.log("Zaporedje: ",this.posnetkiData[i].zaporedje)
-                        }
-                    }
-
-                    //Pregleduje idje
-                    for(var i = 0; i <Object.keys(this.posnetkiData).length; i++){
-                        if(this.posnetkiData[i].idPosnetki != this.posnetkiData[e].idPosnetki){
-                           indexOfElementsArray.push(this.posnetkiData[i].idPosnetki)
-                        }
-                    }
-
-                    axios.post('https://niklavric.com/admin-panel', {
-                        sendByUser: true,
-                        type: "change",
-                        id: this.posnetkiData[e].idPosnetki,
-                        naslovPosnetka: naslovProjekta[e].value,
-                        opisPosnetka: opisProjekta[e].value,
-                        videoLink: videoLink[e].value ,
-                        thumbnail: thumbnail[e].value,
-                        naslovPosnetkaApi: naslovPosnetkaApi[e].value,
-                        oldThumbnail: this.posnetkiData[e].thumbnail,
-
-                        zaporedjeArray: zaporedjeArray,
-                        indexOfElementsArray: indexOfElementsArray,
-                        newIndex: zaporedje[e].value
-                    }).then((response) => {
+                //if function 'checkData()' return true program procedes with axioes request
+                if(this.checkData()){
+                    data.append('image', thumbnail);
+                    data.append('sendByUser', true);
+                    data.append('type', 'add');
+                    data.append('imageName', this.thumbnailName);
+                    data.append('naslovPosnetka', this.naslovPosnetka);
+                    data.append('opisPosnetka', this.opisPosnetka);
+                    data.append('videoLink', this.videoLink);
+                    data.append('apiNaslovPosnetka', this.apiNaslovPosnetka);
+                    data.append('zaporedje', Object.keys(this.posnetkiData).length+1);
+                    axios.post('https://niklavric.com/admin-panel', data, settings)
+                    .then(response => {
                         this.posnetkiData = response.data.data;
                     }).then(()=>{
                         for(var i = 0; i < (Object.keys(this.posnetkiData).length); i++){
                             this.posnetkiData[i].id = i
                         }
+                    })
+                    .then(()=>{
+                        this.naslovPosnetka =  ''
+                        this.opisPosnetka = ''
+                        this.videoLink = ''
+                        this.thumbnail = ''
+                        this.apiNaslovPosnetka =''
+                        this.thumbnailName = ''
+                        this.filterErrorMessage = ''
                     });
-
-
-
+                }
             },
-            //Deletes data from database
-            deleteData(e){
-                var idPosnetkov = []
-                var thumbnailName;
+            changeData(e){
+                //Data to change
+                var naslovPosnetka = document.getElementsByClassName('naslovPosnetka')[e].value;
+                var opisPosnetka = document.getElementsByClassName('opisPosnetka')[e].value
+                var naslovPosnetkaApi = document.getElementsByClassName('naslovPosnetkaApi')[e].value
+                var videoLink = document.getElementsByClassName('videoLink')[e].value
+                var id = this.posnetkiData[e].idPosnetki;
 
-                for(var i = 0; i < Object.keys(this.posnetkiData).length; i++){
-                    if(this.posnetkiData[i].idPosnetki != e){
-                        idPosnetkov.push(this.posnetkiData[i].idPosnetki)
+
+                axios.post('https://niklavric.com/admin-panel',
+                    {
+                        sendByUser: true,
+                        type: "changeData",
+                        naslovPosnetka: naslovPosnetka,
+                        opisPosnetka: opisPosnetka,
+                        naslovPosnetkaApi: naslovPosnetkaApi,
+                        newImeSlike: imeSlike,
+                        id: id
                     }
-                    else{
-                        thumbnailName = this.posnetkiData[i].thumbnail
+                )
+                .then(response => {
+                    this.posnetkiData = response.data.data;
+                }).then(()=>{
+                    for(var i = 0; i < (Object.keys(this.posnetkiData).length); i++){
+                        this.posnetkiData[i].id = i
+                    }
+                })
+            },
+
+            //This function changes the order of elements
+            onEnd: function(evt){
+
+                var oldIndex = evt.oldIndex
+                var newIndex = evt.newIndex
+
+                var indexOfElementsArray = []
+                var zaporedjeArray = []
+
+                //Appends order of ids, if order is not the same as order of moved id
+                for(var i = 0; i < Object.keys(this.posnetkiData).length; i++){
+                    if(this.posnetkiData[i].zaporedje != this.posnetkiData[newIndex].zaporedje){
+                        zaporedjeArray.push(parseInt(this.posnetkiData[i].zaporedje))
                     }
                 }
 
+                //Checks all of ids and appends those who are not the same as the selected one
+                for(var i = 0; i <Object.keys(this.posnetkiData).length; i++){
+                    if(this.posnetkiData[i].idPosnetki != this.posnetkiData[oldIndex].idPosnetki){
+                        indexOfElementsArray.push(this.posnetkiData[i].idPosnetki)
+                    }
+                }
+                //Sends data to backend
+                axios.post('https://niklavric.com/admin-panel', {
+                    sendByUser: true,
+                    type: "changeOrder",
+                    id:this.posnetkiData[oldIndex].idPosnetki,
+                    zaporedjeArray: zaporedjeArray,
+                    indexOfElementsArray: indexOfElementsArray,
+                    newIndex: newIndex+1
+                }).then((response) => {
+                    this.posnetkiData = response.data.data
+                }).then(()=>{
+                    for(var i = 0; i < (Object.keys(this.posnetkiData).length); i++){
+                        this.posnetkiData[i].id = i
+                    }
+                });
+            },
+            //Deletes record from the database and reincrements the order
+            deleteData(e){
 
+                var idPosnetkovArray = []
+                var thumbnailName;
 
+                //Loops through data and appends all id that are not equal to selected one.
+                //It also stores thumbnail name to variable and sends everything to database
+                for(var i = 0; i < Object.keys(this.posnetkiData).length; i++){
+                    if(this.posnetkiData[i].idPosnetki != e+1){
+                        idPosnetkovArray.push(this.posnetkiData[i].idPosnetki)
+                    }
+                    else{
+                        thumbnailName = this.posnetkiData[e].thumbnail
+                    }
+                }
 
+                //Sends data to database
                 axios.post('https://niklavric.com/admin-panel',{
-                    id:e,
                     sendByUser: true,
                     type: "delete",
-                    imageName: thumbnailName,
-                    idPosnetkov: idPosnetkov
+                    id:this.posnetkiData[e].idPosnetki,
+                    thumbnailName: thumbnailName,
+                    idPosnetkov: idPosnetkovArray
                 }).then((response) => {
                     this.posnetkiData = response.data.data;
                 })
@@ -339,7 +388,7 @@
                     for(var i = 0; i < (Object.keys(this.posnetkiData).length); i++){
                         this.posnetkiData[i].id = i
                     }
-                });
+                })
             }
         }
     }

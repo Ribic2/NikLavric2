@@ -16,6 +16,10 @@ use Symfony\Component\HttpFoundation\Session\Session;
 Route::post('login', 'LoginController@store');
 Route::post('admin-panel', 'cmsController@store');
 Route::get('admin-panel', 'cmsController@index');
+
+Route::post('work', 'videoController@store');
+Route::get('work', 'videoController@index');
+
 Route::get('/{any}', 'indexController@index')->where('any', '.*');
 
 Route::get('/home', 'HomeController@index')->name('home');

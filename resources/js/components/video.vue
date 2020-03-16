@@ -88,23 +88,20 @@ export default {
         var splitPath = path.split('/')[2];
         var fullPathName = splitPath.split('%20').join(' ');
 
-        axios.get("https://niklavric.com/api/posnetki/"+fullPathName).then((response) => {
-            if(response.data != null){
-                this.posnetekData = response.data.data[0];
-                this.posnetekNaslov = response.data.data[0].naslovPosnetka.toUpperCase();
+        axios.post("https://niklavric.com/work",
+        {
+            path: fullPathName
+        })
+        .then((response) => {
+            this.posnetekData = response.data.data[0];
+            this.posnetekNaslov = response.data.data[0].naslovPosnetka.toUpperCase();
 
-                var opis = response.data.data[0].opisPosnetka.split(";");
-                for(var i = 0; i < opis.length; i++){
-                    var split = opis[i].split(":");
-                    var data = {opis: split[0], ime: split[1]};
+            var opis = response.data.data[0].opisPosnetka.split(";");
 
-                    this.posnetekOpis.push(data);
-
-                }
-
-
-            }else{
-                this.posnetekData = 'Video not found!';
+            for(var i = 0; i < opis.length; i++){
+                var split = opis[i].split(":");
+                var data = {opis: split[0], ime: split[1]};
+                this.posnetekOpis.push(data);
             }
         });
     }

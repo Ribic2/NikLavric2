@@ -44,25 +44,14 @@ class cmsController extends Controller
     {
         if($request->input('type') && $request->input('sendByUser')){
             switch($request->input('type')){
-                case 'change':
-
+                case 'changeOrder':
                     //Update selected record in database
-                    $oldThumbnail = $request->input('oldThumbnail');
-                    $newThumbnail = $request->input('thumbnail');
-
                     $newIndex = $request->input('newIndex');
-
                     $zaporedjeArray = $request->input('zaporedjeArray');
                     $indexOfElementsArray = $request->input('indexOfElementsArray');
 
-                    $newIndex = $request->input('newIndex');
-
-                    if($newThumbnail != $oldThumbnail){
-                        Storage::move('public/'.$oldThumbnail, 'public/'.$newThumbnail);
-                    }
-
-                    DB::update('UPDATE posnetki set zaporedje = ?, naslovPosnetka = ?, opisPosnetka = ?, videoLink = ?, thumbnail =  ?, naslovPosnetkaApi = ? WHERE idPosnetki = ?',
-                        [$newIndex, $request->input('naslovPosnetka'), $request->input('opisPosnetka'), $request->input('videoLink'), $request->input('thumbnail'), $request->input('naslovPosnetkaApi'), $request->input('id')]
+                    DB::update('UPDATE posnetki set zaporedje = ? WHERE idPosnetki = ?',
+                        [$newIndex, $request->input('id')]
                     );
 
                     for($i = 0; $i < count($zaporedjeArray); $i++){
@@ -70,15 +59,16 @@ class cmsController extends Controller
                     }
 
                     return PosnetkiResource::collection(Posnetki::orderBy('zaporedje')->get());
+
                 case 'delete':
                     $idPosnetkov = $request->input('idPosnetkov');
-                    $imageName = $request->input('imageName');
+                    $thumbnailName = $request->input('thumbnailName');
+                    $id = $request->input('id');
 
                     //Delete record from database
-                    //Storage::delete($imageName);
-                    unlink(storage_path('/app/public/'.$imageName));
+                    Storage::delete('public/storage/'.$thumbnailName);
 
-                    posnetki::destroy($request->input('id'));
+                    DB::delete('delete from posnetki where idPosnetki = ?', [$id]);
 
                     for($i = 0; $i < count($idPosnetkov); $i++){
                         DB::update('update posnetki set zaporedje = ? where idPosnetki = ?', [$i+1, $idPosnetkov[$i]]);
@@ -104,7 +94,21 @@ class cmsController extends Controller
 
                    return PosnetkiResource::collection(Posnetki::orderBy('zaporedje')->get());
 
+                case 'changeData':
+                    //Send data
+                    $naslovPosnetka = $request->input('naslovPosnetka');
+                    $opisPosnetka = $request->input('opisPosnetka');
+                    $naslovPosnetkaApi = $request->input('naslovPosnetkaApi');
+                    $videoLink = $request->input('videoLink');
+                    $id = $request->input('id');
+
+
+                    DB::update('update posnetki set naslovPosnetka = ?, opisPosnetka = ?, videoLink = ?, naslovPosnetkaApi = ? where idPosnetki = ?',
+                    [$naslovPosnetka, $opisPosnetka, $videoLink, $naslovPosnetkaApi, $id]);
+
+                    return PosnetkiResource::collection(Posnetki::orderBy('zaporedje')->get());
                 }
+
         }
         return "Error";
 
