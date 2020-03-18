@@ -6,7 +6,7 @@
             </md-app-toolbar>
         </md-app>
         <md-content>
-            <form>
+            <form v-if="showAddSection == true">
                 <div>
                     <md-field class = "md-field">
                         <label>Naslov posnetka</label>
@@ -37,10 +37,13 @@
                         <label>Opis posnetka</label>
                         <md-textarea  class = "input" id = "opisPosnetka" v-model="opisPosnetka"></md-textarea>
                     </md-field>
-                    <md-button class="md-raised md-primary" id = "addButton" @click="addData()">Dodaj</md-button>
-
+                    <md-button class="md-raised md-primary" id = "addButton" @click="addData()">DODAJ</md-button>
+                    <button @click="changeValueShow()" class = "changeButtonShow">SKRIJ</button>
                 </div>
             </form>
+            <div v-else-if="showAddSection == false">
+                <button @click="changeValueShow()" class = "changeButtonShow">SKRIJ</button>
+            </div>
             <hr>
             <draggable ghost-class="ghost" @end="onEnd">
                 <transition-group type = "transition" name="flip-list">
@@ -91,6 +94,14 @@
     .md-field{
         margin: 5px;
     }
+    .changeButtonShow{
+        width: 100%;
+        height: 50px;
+        margin: 5px;
+        background-color: #448aff;
+        color: white;
+        border: solid 1px #448aff;
+    }
     .md-primary{
         overflow: hidden;
     }
@@ -115,11 +126,13 @@
         height: auto;
         margin: 5px;
         margin-top: 10px;
-        border: solid 1px black;
+        border-radius: 2px;
+        background-color: #f2f2f2;
+        border: solid 1px #cccccc;
     }
     .sortable:hover{
         cursor: move;
-
+        box-shadow: 10px 10px 10px gray;
     }
     .sortable-drag{
         opacity: 0;
@@ -198,7 +211,9 @@
                 showSnackbar: false,
                 position: 'center',
                 duration: 4000,
-                isInfinity: false
+                isInfinity: false,
+                //Add new record settings
+                showAddSection: false
             }
         },
         //When page is loaded it calls to API and stores returned data into global variable
@@ -207,9 +222,11 @@
                 this.posnetkiData = response.data.data;
             })
             .then(()=>{
-               for(var i = 0; i < Object.keys(this.posnetkiData).length; i++){
+                for(var i = 0; i < Object.keys(this.posnetkiData).length; i++){
                    this.posnetkiData[i].id = i;
-               }
+                   this.showArray.push(true);
+                }
+
             });
         },
         methods:{
@@ -290,6 +307,13 @@
                     });
                 }
             },
+            changeValueShow(){
+                if(this.showAddSection == true){
+                    this.showAddSection = false;
+                }else{
+                    this.showAddSection = true;
+                }
+            },
             changeData(e){
                 //Data to change
                 var naslovPosnetka = document.getElementsByClassName('naslovPosnetka')[e].value;
@@ -306,7 +330,6 @@
                         naslovPosnetka: naslovPosnetka,
                         opisPosnetka: opisPosnetka,
                         naslovPosnetkaApi: naslovPosnetkaApi,
-                        newImeSlike: imeSlike,
                         id: id
                     }
                 )

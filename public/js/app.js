@@ -2304,6 +2304,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2323,18 +2336,22 @@ __webpack_require__.r(__webpack_exports__);
       showSnackbar: false,
       position: 'center',
       duration: 4000,
-      isInfinity: false
+      isInfinity: false,
+      //Add new record settings
+      showAddSection: false
     };
   },
   //When page is loaded it calls to API and stores returned data into global variable
   created: function created() {
     var _this = this;
 
-    axios.get("http://127.0.0.1:8000/api/posnetki").then(function (response) {
+    axios.get("https://niklavric.com/api/posnetki").then(function (response) {
       _this.posnetkiData = response.data.data;
     }).then(function () {
       for (var i = 0; i < Object.keys(_this.posnetkiData).length; i++) {
         _this.posnetkiData[i].id = i;
+
+        _this.showArray.push(true);
       }
     });
   },
@@ -2397,7 +2414,7 @@ __webpack_require__.r(__webpack_exports__);
         data.append('videoLink', this.videoLink);
         data.append('apiNaslovPosnetka', this.apiNaslovPosnetka);
         data.append('zaporedje', Object.keys(this.posnetkiData).length + 1);
-        axios.post('http://127.0.0.1:8000/admin-panel', data, settings).then(function (response) {
+        axios.post('https://niklavric.com/admin-panel', data, settings).then(function (response) {
           _this2.posnetkiData = response.data.data;
         }).then(function () {
           for (var i = 0; i < Object.keys(_this2.posnetkiData).length; i++) {
@@ -2414,6 +2431,13 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
+    changeValueShow: function changeValueShow() {
+      if (this.showAddSection == true) {
+        this.showAddSection = false;
+      } else {
+        this.showAddSection = true;
+      }
+    },
     changeData: function changeData(e) {
       var _this3 = this;
 
@@ -2423,13 +2447,12 @@ __webpack_require__.r(__webpack_exports__);
       var naslovPosnetkaApi = document.getElementsByClassName('naslovPosnetkaApi')[e].value;
       var videoLink = document.getElementsByClassName('videoLink')[e].value;
       var id = this.posnetkiData[e].idPosnetki;
-      axios.post('http://127.0.0.1:8000/admin-panel', {
+      axios.post('https://niklavric.com/admin-panel', {
         sendByUser: true,
         type: "changeData",
         naslovPosnetka: naslovPosnetka,
         opisPosnetka: opisPosnetka,
         naslovPosnetkaApi: naslovPosnetkaApi,
-        newImeSlike: imeSlike,
         id: id
       }).then(function (response) {
         _this3.posnetkiData = response.data.data;
@@ -2462,7 +2485,7 @@ __webpack_require__.r(__webpack_exports__);
       } //Sends data to backend
 
 
-      axios.post('http://127.0.0.1:8000/admin-panel', {
+      axios.post('https://niklavric.com/admin-panel', {
         sendByUser: true,
         type: "changeOrder",
         id: this.posnetkiData[oldIndex].idPosnetki,
@@ -2494,7 +2517,7 @@ __webpack_require__.r(__webpack_exports__);
       } //Sends data to database
 
 
-      axios.post('http://127.0.0.1:8000/admin-panel', {
+      axios.post('https://niklavric.com/admin-panel', {
         sendByUser: true,
         type: "delete",
         id: this.posnetkiData[e].idPosnetki,
@@ -2829,7 +2852,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get("http://127.0.0.1:8000/api/posnetki").then(function (response) {
+    axios.get("https://niklavric.com/api/posnetki").then(function (response) {
       _this.posnetkiData = response.data.data;
     }).then(function () {
       for (var i = 0; i < Object.keys(_this.posnetkiData).length; i++) {
@@ -2951,12 +2974,12 @@ __webpack_require__.r(__webpack_exports__);
       if (!this.username || !this.password) {
         this.responseData = "Missing credentials.";
       } else {
-        axios.post('http://127.0.0.1:8000/login', {
+        axios.post('https://niklavric.com/login', {
           username: this.username,
           password: this.password
         }).then(function (res) {
           if (res.data == 1) {
-            window.location.href = "http://127.0.0.1:8000/admin-panel";
+            window.location.href = "https://niklavric.com/admin-panel";
           } else {
             _this.responseData = res.data;
           }
@@ -3187,7 +3210,7 @@ __webpack_require__.r(__webpack_exports__);
     var path = window.location.pathname;
     var splitPath = path.split('/')[2];
     var fullPathName = splitPath.split('%20').join(' ');
-    axios.post("http://127.0.0.1:8000/work", {
+    axios.post("https://niklavric.com/work", {
       path: fullPathName
     }).then(function (response) {
       _this.posnetekData = response.data.data[0];
@@ -7790,7 +7813,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-2ff09664]{\n    padding: 0px;\n    margin: 0px;\n    font-family: 'Open Sans', sans-serif;\n}\n.page-container[data-v-2ff09664] {\n    min-height: 300px;\n    overflow: hidden;\n    position: relative;\n    border: 1px solid rgba(#000, .12);\n}\n#opisPosnetka[data-v-2ff09664]{\n    height: 250px;\n}\n.md-drawer[data-v-2ff09664] {\n    width: 230px;\n    max-width: calc(100vw - 125px);\n}\n.md-content[data-v-2ff09664] {\n    padding: 16px;\n}\n.md-field[data-v-2ff09664]{\n    margin: 5px;\n}\n.md-primary[data-v-2ff09664]{\n    overflow: hidden;\n}\n#addButton[data-v-2ff09664]{\n    width: 100%;\n    margin: 5px;\n    height: 50px;\n}\n.input[data-v-2ff09664]{\n    position: relative;\n    top: 15px;\n}\n#errorDisplay[data-v-2ff09664]{\n    text-align: center;\n    width: 100%;\n    height: 100%;\n}\n/*Change, edit, delete part */\n.sortable[data-v-2ff09664]{\n    width: 100%;\n    min-height: 100px;\n    height: auto;\n    margin: 5px;\n    margin-top: 10px;\n    border: solid 1px black;\n}\n.sortable[data-v-2ff09664]:hover{\n    cursor: move;\n}\n.sortable-drag[data-v-2ff09664]{\n    opacity: 0;\n}\n.flip-list-move[data-v-2ff09664]{\n    -webkit-transition: -webkit-transform 0.5s;\n    transition: -webkit-transform 0.5s;\n    transition: transform 0.5s;\n    transition: transform 0.5s, -webkit-transform 0.5s;\n}\n.changeButton[data-v-2ff09664]{\n    background-color: green;\n    border: solid 1px green;\n}\n.deleteButton[data-v-2ff09664]{\n    background-color: red;\n    border: solid 1px red;\n}\n.button[data-v-2ff09664]{\n    color: white;\n    margin: 5px;\n    height: 50px;\n    width: 200px;\n}\n.changeInputField[data-v-2ff09664]{\n    margin: 5px;\n    width: 32.3%;\n    height: 50px;\n}\n.changeTextArea[data-v-2ff09664]{\n    resize: none !important;\n    position: relative;\n    width: 99%;\n    margin: 5px;\n    display: block;\n}\n.id[data-v-2ff09664]{\n    margin: 5px;\n}\n/*Responsive section */\n@media only screen and (max-width: 767px){\n.header[data-v-2ff09664]{\n        height: 64px;\n}\n.changeInputField[data-v-2ff09664], .changeTextArea[data-v-2ff09664]{\n        display: block;\n        width: 98%;\n}\n}\n@media only screen and (min-width: 600px) and (max-width: 960px){\n.header[data-v-2ff09664]{\n        height: 64px;\n}\n.changeInputField[data-v-2ff09664], .changeTextArea[data-v-2ff09664]{\n        display: block;\n        width: 98%;\n}\n}\n", ""]);
+exports.push([module.i, "\n*[data-v-2ff09664]{\n    padding: 0px;\n    margin: 0px;\n    font-family: 'Open Sans', sans-serif;\n}\n.page-container[data-v-2ff09664] {\n    min-height: 300px;\n    overflow: hidden;\n    position: relative;\n    border: 1px solid rgba(#000, .12);\n}\n#opisPosnetka[data-v-2ff09664]{\n    height: 250px;\n}\n.md-drawer[data-v-2ff09664] {\n    width: 230px;\n    max-width: calc(100vw - 125px);\n}\n.md-content[data-v-2ff09664] {\n    padding: 16px;\n}\n.md-field[data-v-2ff09664]{\n    margin: 5px;\n}\n.changeButtonShow[data-v-2ff09664]{\n    width: 100%;\n    height: 50px;\n    margin: 5px;\n    background-color: #448aff;\n    color: white;\n    border: solid 1px #448aff;\n}\n.md-primary[data-v-2ff09664]{\n    overflow: hidden;\n}\n#addButton[data-v-2ff09664]{\n    width: 100%;\n    margin: 5px;\n    height: 50px;\n}\n.input[data-v-2ff09664]{\n    position: relative;\n    top: 15px;\n}\n#errorDisplay[data-v-2ff09664]{\n    text-align: center;\n    width: 100%;\n    height: 100%;\n}\n/*Change, edit, delete part */\n.sortable[data-v-2ff09664]{\n    width: 100%;\n    min-height: 100px;\n    height: auto;\n    margin: 5px;\n    margin-top: 10px;\n    border-radius: 2px;\n    background-color: #f2f2f2;\n    border: solid 1px #cccccc;\n}\n.sortable[data-v-2ff09664]:hover{\n    cursor: move;\n    box-shadow: 10px 10px 10px gray;\n}\n.sortable-drag[data-v-2ff09664]{\n    opacity: 0;\n}\n.flip-list-move[data-v-2ff09664]{\n    -webkit-transition: -webkit-transform 0.5s;\n    transition: -webkit-transform 0.5s;\n    transition: transform 0.5s;\n    transition: transform 0.5s, -webkit-transform 0.5s;\n}\n.changeButton[data-v-2ff09664]{\n    background-color: green;\n    border: solid 1px green;\n}\n.deleteButton[data-v-2ff09664]{\n    background-color: red;\n    border: solid 1px red;\n}\n.button[data-v-2ff09664]{\n    color: white;\n    margin: 5px;\n    height: 50px;\n    width: 200px;\n}\n.changeInputField[data-v-2ff09664]{\n    margin: 5px;\n    width: 32.3%;\n    height: 50px;\n}\n.changeTextArea[data-v-2ff09664]{\n    resize: none !important;\n    position: relative;\n    width: 99%;\n    margin: 5px;\n    display: block;\n}\n.id[data-v-2ff09664]{\n    margin: 5px;\n}\n/*Responsive section */\n@media only screen and (max-width: 767px){\n.header[data-v-2ff09664]{\n        height: 64px;\n}\n.changeInputField[data-v-2ff09664], .changeTextArea[data-v-2ff09664]{\n        display: block;\n        width: 98%;\n}\n}\n@media only screen and (min-width: 600px) and (max-width: 960px){\n.header[data-v-2ff09664]{\n        height: 64px;\n}\n.changeInputField[data-v-2ff09664], .changeTextArea[data-v-2ff09664]{\n        display: block;\n        width: 98%;\n}\n}\n", ""]);
 
 // exports
 
@@ -45926,142 +45949,172 @@ var render = function() {
       _c(
         "md-content",
         [
-          _c("form", [
-            _c(
-              "div",
-              [
+          _vm.showAddSection == true
+            ? _c("form", [
                 _c(
-                  "md-field",
-                  { staticClass: "md-field" },
+                  "div",
                   [
-                    _c("label", [_vm._v("Naslov posnetka")]),
+                    _c(
+                      "md-field",
+                      { staticClass: "md-field" },
+                      [
+                        _c("label", [_vm._v("Naslov posnetka")]),
+                        _vm._v(" "),
+                        _c("md-input", {
+                          staticClass: "input",
+                          model: {
+                            value: _vm.naslovPosnetka,
+                            callback: function($$v) {
+                              _vm.naslovPosnetka = $$v
+                            },
+                            expression: "naslovPosnetka"
+                          }
+                        })
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
-                    _c("md-input", {
-                      staticClass: "input",
-                      model: {
-                        value: _vm.naslovPosnetka,
-                        callback: function($$v) {
-                          _vm.naslovPosnetka = $$v
-                        },
-                        expression: "naslovPosnetka"
-                      }
-                    })
+                    _c(
+                      "md-field",
+                      { staticClass: "md-field" },
+                      [
+                        _c("label", [_vm._v("Video link")]),
+                        _vm._v(" "),
+                        _c("md-input", {
+                          staticClass: "input",
+                          model: {
+                            value: _vm.videoLink,
+                            callback: function($$v) {
+                              _vm.videoLink = $$v
+                            },
+                            expression: "videoLink"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "md-field",
+                      { staticClass: "md-field" },
+                      [
+                        _c("label", [_vm._v("Ime slike")]),
+                        _vm._v(" "),
+                        _c("md-input", {
+                          staticClass: "input",
+                          model: {
+                            value: _vm.thumbnailName,
+                            callback: function($$v) {
+                              _vm.thumbnailName = $$v
+                            },
+                            expression: "thumbnailName"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "md-field",
+                      { staticClass: "md-field" },
+                      [
+                        _c("label", [_vm._v("Slika")]),
+                        _vm._v(" "),
+                        _c("md-file", {
+                          staticClass: "input",
+                          attrs: { id: "thumbnail" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "md-field",
+                      { staticClass: "md-field" },
+                      [
+                        _c("label", [_vm._v("Naslov posnetka API")]),
+                        _vm._v(" "),
+                        _c("md-input", {
+                          staticClass: "input",
+                          model: {
+                            value: _vm.apiNaslovPosnetka,
+                            callback: function($$v) {
+                              _vm.apiNaslovPosnetka = $$v
+                            },
+                            expression: "apiNaslovPosnetka"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "md-field",
+                      { staticClass: "md-field" },
+                      [
+                        _c("label", [_vm._v("Opis posnetka")]),
+                        _vm._v(" "),
+                        _c("md-textarea", {
+                          staticClass: "input",
+                          attrs: { id: "opisPosnetka" },
+                          model: {
+                            value: _vm.opisPosnetka,
+                            callback: function($$v) {
+                              _vm.opisPosnetka = $$v
+                            },
+                            expression: "opisPosnetka"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "md-button",
+                      {
+                        staticClass: "md-raised md-primary",
+                        attrs: { id: "addButton" },
+                        on: {
+                          click: function($event) {
+                            return _vm.addData()
+                          }
+                        }
+                      },
+                      [_vm._v("DODAJ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "changeButtonShow",
+                        on: {
+                          click: function($event) {
+                            return _vm.changeValueShow()
+                          }
+                        }
+                      },
+                      [_vm._v("SKRIJ")]
+                    )
                   ],
                   1
-                ),
-                _vm._v(" "),
+                )
+              ])
+            : _vm.showAddSection == false
+            ? _c("div", [
                 _c(
-                  "md-field",
-                  { staticClass: "md-field" },
-                  [
-                    _c("label", [_vm._v("Video link")]),
-                    _vm._v(" "),
-                    _c("md-input", {
-                      staticClass: "input",
-                      model: {
-                        value: _vm.videoLink,
-                        callback: function($$v) {
-                          _vm.videoLink = $$v
-                        },
-                        expression: "videoLink"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-field",
-                  { staticClass: "md-field" },
-                  [
-                    _c("label", [_vm._v("Ime slike")]),
-                    _vm._v(" "),
-                    _c("md-input", {
-                      staticClass: "input",
-                      model: {
-                        value: _vm.thumbnailName,
-                        callback: function($$v) {
-                          _vm.thumbnailName = $$v
-                        },
-                        expression: "thumbnailName"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-field",
-                  { staticClass: "md-field" },
-                  [
-                    _c("label", [_vm._v("Slika")]),
-                    _vm._v(" "),
-                    _c("md-file", {
-                      staticClass: "input",
-                      attrs: { id: "thumbnail" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-field",
-                  { staticClass: "md-field" },
-                  [
-                    _c("label", [_vm._v("Naslov posnetka API")]),
-                    _vm._v(" "),
-                    _c("md-input", {
-                      staticClass: "input",
-                      model: {
-                        value: _vm.apiNaslovPosnetka,
-                        callback: function($$v) {
-                          _vm.apiNaslovPosnetka = $$v
-                        },
-                        expression: "apiNaslovPosnetka"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-field",
-                  { staticClass: "md-field" },
-                  [
-                    _c("label", [_vm._v("Opis posnetka")]),
-                    _vm._v(" "),
-                    _c("md-textarea", {
-                      staticClass: "input",
-                      attrs: { id: "opisPosnetka" },
-                      model: {
-                        value: _vm.opisPosnetka,
-                        callback: function($$v) {
-                          _vm.opisPosnetka = $$v
-                        },
-                        expression: "opisPosnetka"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-button",
+                  "button",
                   {
-                    staticClass: "md-raised md-primary",
-                    attrs: { id: "addButton" },
+                    staticClass: "changeButtonShow",
                     on: {
                       click: function($event) {
-                        return _vm.addData()
+                        return _vm.changeValueShow()
                       }
                     }
                   },
-                  [_vm._v("Dodaj")]
+                  [_vm._v("SKRIJ")]
                 )
-              ],
-              1
-            )
-          ]),
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
