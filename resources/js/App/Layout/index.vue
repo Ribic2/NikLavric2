@@ -27,8 +27,8 @@
 </style>
 
 <script>
-    import navbar from './navbar.vue'
-    import cookies from './cookie.vue'
+    import navbar from '../Componenets/navbar'
+    import cookies from '../Componenets/cookie'
 
     export default {
         components:{

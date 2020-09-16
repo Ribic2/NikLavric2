@@ -1,7 +1,6 @@
 <?php
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +19,8 @@ Route::get('admin-panel', 'cmsController@index');
 Route::post('work', 'videoController@store');
 Route::get('work', 'videoController@index');
 
-Route::get('/{any}', 'indexController@index')->where('any', '.*');
+Route::get('/{any}', function(){
+    return view('index');
+})->where('any', '.*');
 
 Route::get('/home', 'HomeController@index')->name('home');

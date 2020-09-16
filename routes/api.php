@@ -1,10 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
-Use App\posnetki;
-use App\Http\Resources\PosnetkiResource as PosnetkiResource;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,10 +11,4 @@ use App\Http\Resources\PosnetkiResource as PosnetkiResource;
 |
 */
 
-Route::get('posnetki', function(){
-    return PosnetkiResource::collection(Posnetki::orderBy('zaporedje')->get());
-});
-
-Route::get('posnetki/{id}', function($id) {
-    return PosnetkiResource::collection(Posnetki::where('naslovPosnetkaApi', $id)->get());
-});
+Route::get('/videos', 'VideoController@getVideos');

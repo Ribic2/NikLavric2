@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\user as Users;
 use Illuminate\Support\Facades\Auth;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class LoginController extends Controller
 {
@@ -36,20 +36,20 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        $username = $request->input('username');
-        $password = $request->input('password');
-        $hashed_random_string = Hash::make("sdadsadasgfag");
+        $username = (string)$request->input('username');
+        $password = (string)$request->input('password');
 
 
         $user = Users::where('username', $username)->get();
+
         if(count($user) > 0){
             if(Hash::check($password, $user[0]->password)){
                 session(['key' => $hashed_random_string]);
                 return 1;
             }
-            return "Username or password is incorrect!";
+            return abort(403, "Username or password are incorrect!");
         }
     }
     /**

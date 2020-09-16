@@ -13,14 +13,14 @@ class PosnetkiMigration extends Migration
      */
     public function up()
     {
-        Schema::create('posnetki', function (Blueprint $table){
-            $table->bigIncrements('idPosnetki');
-            $table->string('naslovPosnetka')->nullable($value = false);
-            $table->longText('opisPosnetka');
+        Schema::create('videos', function (Blueprint $table){
+            $table->bigIncrements('id');
+            $table->string('videoTitle')->nullable($value = false);
+            $table->longText('videoDescription');
             $table->string('videoLink');
-            $table->string('thumbnail');
-            $table->string('naslovPosnetkaApi');
-            $table->integer('zaporedje');
+            $table->string('videoThumbnail');
+            $table->string('videoApiTitle');
+            $table->integer('sequence');
         });
 
     }
@@ -32,6 +32,6 @@ class PosnetkiMigration extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('videos');
     }
 }
