@@ -84,13 +84,6 @@
     #opisPosnetka{
         height: 250px;
     }
-    .md-drawer {
-        width: 230px;
-        max-width: calc(100vw - 125px);
-    }
-    .md-content {
-        padding: 16px;
-    }
     .md-field{
         margin: 5px;
     }
@@ -133,12 +126,6 @@
     .sortable:hover{
         cursor: move;
         box-shadow: 10px 10px 10px gray;
-    }
-    .sortable-drag{
-        opacity: 0;
-    }
-    .flip-list-move{
-        transition: transform 0.5s;
     }
     .changeButton{
         background-color: green;
@@ -218,7 +205,7 @@
         },
         //When page is loaded it calls to API and stores returned data into global variable
         created: function(){
-            axios.get("https://niklavric.com/api/posnetki").then((response) => {
+            axios.get("/api/posnetki").then((response) => {
                 this.posnetkiData = response.data.data;
             })
             .then(()=>{
@@ -398,7 +385,7 @@
                 }
 
                 //Sends data to database
-                axios.post('https://niklavric.com/admin-panel',{
+                axios.post('/admin-panel',{
                     sendByUser: true,
                     type: "delete",
                     id:this.posnetkiData[e].idPosnetki,

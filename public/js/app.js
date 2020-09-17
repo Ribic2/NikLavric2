@@ -85786,14 +85786,39 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: [{
     path: '/',
     component: function component() {
-      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ../App/Layout/index */ "./resources/js/App/Layout/index.vue"));
+      return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ../App/Layout/index */ "./resources/js/App/Layout/index.vue"));
     },
     children: [{
       path: '',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../App/pages/home */ "./resources/js/App/pages/home.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ../App/pages/home */ "./resources/js/App/pages/home.vue"));
+      }
+    }, {
+      path: '/work/:id',
+      component: function component() {
+        return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ../App/pages/video */ "./resources/js/App/pages/video.vue"));
+      }
+    }, {
+      path: 'contact',
+      component: function component() {
+        return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ../App/pages/contact */ "./resources/js/App/pages/contact.vue"));
+      }
+    }, {
+      path: 'about',
+      component: function component() {
+        return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ../App/pages/about */ "./resources/js/App/pages/about.vue"));
       }
     }]
+  }, {
+    path: '/admin',
+    component: function component() {
+      return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(4), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ../App/pages/cms */ "./resources/js/App/pages/cms.vue"));
+    }
+  }, {
+    path: '/login',
+    component: function component() {
+      return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ../App/pages/login */ "./resources/js/App/pages/login.vue"));
+    }
   }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
@@ -85949,8 +85974,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\urhbu\Documents\simple_landing_site\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\urhbu\Documents\simple_landing_site\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/vid/Desktop/simple_landing_site/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vid/Desktop/simple_landing_site/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

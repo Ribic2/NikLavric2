@@ -1,79 +1,3 @@
-<style scoped>
-    *{
-        padding: 0px;
-        margin: 0px;
-    }
-    /*CSS for navbar it self*/
-    nav{
-        min-height: 50px;
-        height: auto;
-        width: 100%;
-        border-bottom: solid 1px black;
-        background-color: white !important;
-    }
-    /*Nik Lavrič tekst*/
-    .navbar-brand{
-        width: 183px;
-        height: 25px;
-        left: 388px;
-        top: 141px;
-        font-family: 'Open Sans', sans-serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 25px;
-        color: #000000 !important;
-    }
-    /*Text after Nik Lavrič text*/
-    #EditorColorist{
-        width: 183px;
-        height: 25px;
-        left: 388px;
-        top: 141px;
-        font-family: 'Open Sans', sans-serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 13px;
-        line-height: 18px;
-        color: #000000;
-    }
-    /*Moved links a little bit to the left so it's aligned*/
-    .navbar-nav{
-        position: relative;
-        right: 8px;
-    }
-    /*CSS for links in navbar*/
-    .nav-item{
-        width: 100%;
-        height: 25px;
-        left: 970px;
-        top: 141px;
-        font-family: 'Open Sans', sans-serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 25px;
-        color: #909090;
-    }
-
-    @media only screen and (max-width: 575px){
-       .navbar-nav{
-            position: relative;
-            right: 0px;
-
-        }
-        .nav-item{
-            height: 45px;
-            z-index: 100;
-
-        }
-        .navbar-toggler{
-            height: 40px;
-            width: 40px;
-        }
-    }
-</style>
-
 <template>
    <div class = "row">
         <div class = "col-xl-12">
@@ -110,3 +34,79 @@
         }
     }
 </script>
+
+<style scoped>
+*{
+    padding: 0px;
+    margin: 0px;
+}
+/*CSS for navbar it self*/
+nav{
+    min-height: 50px;
+    height: auto;
+    width: 100%;
+    border-bottom: solid 1px black;
+    background-color: white !important;
+}
+/*Nik Lavrič tekst*/
+.navbar-brand{
+    width: 183px;
+    height: 25px;
+    left: 388px;
+    top: 141px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #000000 !important;
+}
+/*Text after Nik Lavrič text*/
+#EditorColorist{
+    width: 183px;
+    height: 25px;
+    left: 388px;
+    top: 141px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 18px;
+    color: #000000;
+}
+/*Moved links a little bit to the left so it's aligned*/
+.navbar-nav{
+    position: relative;
+    right: 8px;
+}
+/*CSS for links in navbar*/
+.nav-item{
+    width: 100%;
+    height: 25px;
+    left: 970px;
+    top: 141px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #909090;
+}
+
+@media only screen and (max-width: 575px){
+    .navbar-nav{
+        position: relative;
+        right: 0px;
+
+    }
+    .nav-item{
+        height: 45px;
+        z-index: 100;
+
+    }
+    .navbar-toggler{
+        height: 40px;
+        width: 40px;
+    }
+}
+</style>
